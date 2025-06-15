@@ -9,7 +9,7 @@ import ContactPage from "./Pages/Contact.jsx";
 import WelcomeScreen from "./Pages/WelcomeScreen.jsx";
 import { AnimatePresence, motion } from 'framer-motion';
 import NotFound from "./NotFound.jsx";
-import RunningBanner from "./components/RunningBanner.jsx";
+// import RunningBanner from "./components/RunningBanner.jsx"; //Informasi pembaruan konten ada di baris 159 kalau kalian matikan harus marilan juga kalau nyalakan harus nyalakan juga 
 
 import {
   SiReact,
@@ -156,7 +156,7 @@ const LandingPage = ({ showWelcome, setShowWelcome }) => {
                 </div>
               </div>
             </motion.footer>
-          <RunningBanner />
+          {/* <RunningBanner /> */} {/*Matikan atau nyalakan sesuwai import di atas*/}
         </div>
       )}
     </>
