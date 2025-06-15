@@ -11,30 +11,9 @@ const Home = () => {
       transition={{ duration: 0.8, ease: "easeOut" }}
     >
       <div className="w-full max-w-7xl flex flex-col lg:flex-row items-center justify-between gap-12">
-        {/* Text Content */}
-        <motion.div
-          className="w-full lg:w-1/2 flex flex-col items-center lg:items-start text-center lg:text-left"
-          initial={{ opacity: 0, x: -50 }}
-          animate={{ opacity: 1, x: 0 }}
-          transition={{ duration: 0.8, delay: 0.2, ease: "easeOut" }}
-        >
-          <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-pink-600 mb-6 leading-tight tracking-wide">
-            Hi, I’m Siti Mustagimah!
-          </h1>
-          <p className="text-lg sm:text-xl text-gray-800 mb-6 font-medium max-w-lg">
-            I design <span className="text-yellow-400 font-semibold">intuitive</span> and <span className="text-pink-500 font-semibold">engaging</span> digital experiences that users love.
-          </p>
-          <a
-            href="#contact"
-            className="px-8 py-3 bg-pink-600 text-white font-semibold rounded-full hover:bg-yellow-400 hover:text-gray-800 transition-all duration-300 shadow-md hover:shadow-lg hover:scale-105"
-          >
-            Let’s Collaborate!
-          </a>
-        </motion.div>
-
         {/* Photo Card */}
         <motion.div
-          className="relative group w-full lg:w-1/2 max-w-md"
+          className="relative group w-full lg:w-1/2 max-w-md order-first lg:order-last"
           initial={{ opacity: 0, x: 50 }}
           animate={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.8, delay: 0.4, ease: "easeOut" }}
@@ -56,6 +35,27 @@ const Home = () => {
             <div className="absolute -top-2 -right-2 w-8 h-8 bg-pink-400 rounded-full animate-ping opacity-75"></div>
             <div className="absolute -bottom-2 -left-2 w-6 h-6 bg-yellow-300 rounded-full animate-pulse opacity-50"></div>
           </div>
+        </motion.div>
+
+        {/* Text Content */}
+        <motion.div
+          className="w-full lg:w-1/2 flex flex-col items-center lg:items-start text-center lg:text-left order-last lg:order-first"
+          initial={{ opacity: 0, x: -50 }}
+          animate={{ opacity: 1, x: 0 }}
+          transition={{ duration: 0.8, delay: 0.2, ease: "easeOut" }}
+        >
+          <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-pink-600 mb-6 leading-tight tracking-wide">
+            Hi, I’m Siti Mustagimah!
+          </h1>
+          <p className="text-lg sm:text-xl text-gray-800 mb-6 font-medium max-w-lg">
+            I design <span className="text-yellow-400 font-semibold">intuitive</span> and <span className="text-pink-500 font-semibold">engaging</span> digital experiences that users love.
+          </p>
+          <a
+            href="#contact"
+            className="px-8 py-3 bg-pink-600 text-white font-semibold rounded-full hover:bg-yellow-400 hover:text-gray-800 transition-all duration-300 shadow-md hover:shadow-lg hover:scale-105"
+          >
+            Let’s Collaborate!
+          </a>
         </motion.div>
       </div>
     </motion.section>
