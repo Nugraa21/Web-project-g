@@ -14,8 +14,8 @@ const RunningBanner = () => {
           ease: "linear"
         }}
       >
-        <span>🚧 Website ini sedang dalam pengembangan oleh Developer Nugra21 — Update rutin ditambahkan! 🚀</span>
-        <span>🚧 Website ini sedang dalam pengembangan oleh Developer Nugra21 — Update rutin ditambahkan! 🚀</span>
+        <span> ! !  Website ini sedang dalam pengembangan oleh Developer Nugra21 — Update rutin ditambahkan!</span>
+        <span> ! !  Website ini sedang dalam pengembangan oleh Developer Nugra21 — Update rutin ditambahkan!</span>
       </motion.div>
     </div>
   );
