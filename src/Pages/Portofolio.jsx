@@ -58,58 +58,6 @@ const projects = [
   },
 ];
 
-// const projects = [
-//   {
-//     title: "Presentasi: Menerapkan ISO 27001 di UKM",
-//     description: "",
-//     image: "./project/p1.png",
-//     link: "https://drive.google.com/file/d/1gS_ARlzXc6VixfTOGaX7qeGa5jiduCrA/view",
-//     tools: [],
-//     features: [],
-//   },
-//   {
-//     title: "Review Framework ISO 27001 untuk Gen Z",
-//     description: "",
-//     image: "./project/p2.png",
-//     link: "https://drive.google.com/file/d/18dz0FASagQGPn4ngB32P_4DDKw6A-JXi/view?usp=drive_link",
-//     tools: [],
-//     features: [],
-//   },
-//   {
-//     title: "Artikel: Password Policy",
-//     description: "",
-//     image: "./project/p3.png",
-//     link: "https://drive.google.com/file/d/1XCLkjPGovAC_JWCSP9G-8sRuj9NcHy93/view?usp=drive_link",
-//     tools: [],
-//     features: [],
-//   },
-//   {
-//     title: "Artikel: Implementasi Cybersecurity",
-//     description: "",
-//     image: "./project/p4.png",
-//     link: "https://drive.google.com/file/d/13GOSWY_322aj377qGWNrAYwceklLtc5B/view?usp=drive_link",
-//     tools: [],
-//     features: [],
-//   },
-//   {
-//     title: "Simulasi Dokumen CRA Risk Assessment Shopee",
-//     description: "",
-//     image: "./project/p5.png",
-//     link: "https://docs.google.com/spreadsheets/d/1szNyao3-V19VyAQpsvMsb8HeRSk0jE3m/edit?usp=drive_link&ouid=104545043643630168410&rtpof=true&sd=true",
-//     tools: [],
-//     features: [],
-//   },
-//   {
-//     title: "Simulasi Dokumen Risk Management Shopee",
-//     description: "",
-//     image: "./project/p6.png",
-//     link: "https://docs.google.com/spreadsheets/d/1PZ4OuhvgOIaTPd8knNjL-z-rj5yaxld_/edit?usp=drive_link&ouid=104545043643630168410&rtpof=true&sd=true",
-//     tools: [],
-//     features: [],
-//   },
-
-// ];
-
 const certificates = [
   {
     title: "Certificate 1",
@@ -190,12 +138,12 @@ const certificates = [
   },
 ];
 
-
 const Portofolio = () => {
   const [selectedProject, setSelectedProject] = useState(null);
   const [showMoreProjects, setShowMoreProjects] = useState(false);
   const [showMoreCertificates, setShowMoreCertificates] = useState(false);
-  const [viewMode, setViewMode] = useState("projects"); // "projects" or "certificates"
+  const [viewMode, setViewMode] = useState("projects");
+  const [imageLoaded, setImageLoaded] = useState({}); // Track loaded images
 
   const visibleProjects = showMoreProjects ? projects : projects.slice(0, 3);
   const visibleCertificates = showMoreCertificates ? certificates : certificates.slice(0, 3);
@@ -218,9 +166,20 @@ const Portofolio = () => {
     visible: { opacity: 1, scale: 1, transition: { duration: 0.5, ease: "easeOut" } },
   };
 
+  const skeletonVariants = {
+    pulse: {
+      opacity: [0.6, 1, 0.6],
+      transition: { duration: 1.5, repeat: Infinity, ease: "easeInOut" },
+    },
+  };
+
+  const handleImageLoad = (imageSrc) => {
+    setImageLoaded((prev) => ({ ...prev, [imageSrc]: true }));
+  };
+
   return (
     <motion.section
-      className="min-h-screen flex flex-col items-center justify-start px-4 sm:px-8 lg:px-16 pt-20 sm:pt-24 pb-16 sm:pb-20  relative"
+      className="min-h-screen flex flex-col items-center justify-start px-4 sm:px-8 lg:px-16 pt-20 sm:pt-24 pb-16 sm:pb-20 relative"
       id="Portofolio"
       initial={{ opacity: 0, y: 100 }}
       animate={{ opacity: 1, y: 0 }}
@@ -284,10 +243,18 @@ const Portofolio = () => {
                 transition={{ duration: 10, repeat: Infinity, ease: "linear" }}
               ></motion.div>
               <div className="relative w-full aspect-[16/9] overflow-hidden rounded-xl">
+                {!imageLoaded[project.image] && (
+                  <motion.div
+                    className="absolute inset-0 bg-gray-200 rounded-xl"
+                    variants={skeletonVariants}
+                    animate="pulse"
+                  ></motion.div>
+                )}
                 <img
                   src={project.image}
                   alt={project.title}
-                  className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+                  className={`w-full h-full object-cover transition-transform duration-500 group-hover:scale-110 ${imageLoaded[project.image] ? "opacity-100" : "opacity-0"}`}
+                  onLoad={() => handleImageLoad(project.image)}
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-pink-500/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
               </div>
@@ -334,10 +301,18 @@ const Portofolio = () => {
                 transition={{ duration: 10, repeat: Infinity, ease: "linear" }}
               ></motion.div>
               <div className="relative w-full aspect-[16/9] overflow-hidden rounded-xl">
+                {!imageLoaded[certificate.image] && (
+                  <motion.div
+                    className="absolute inset-0 bg-gray-200 rounded-xl"
+                    variants={skeletonVariants}
+                    animate="pulse"
+                  ></motion.div>
+                )}
                 <img
                   src={certificate.image}
                   alt={certificate.title}
-                  className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+                  className={`w-full h-full object-cover transition-transform duration-500 group-hover:scale-110 ${imageLoaded[certificate.image] ? "opacity-100" : "opacity-0"}`}
+                  onLoad={() => handleImageLoad(certificate.image)}
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-yellow-500/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
               </div>
@@ -348,13 +323,6 @@ const Portofolio = () => {
                 <p className="text-gray-700 text-sm line-clamp-2 leading-relaxed font-comic-sans">
                   Issued by {certificate.issuer} on {certificate.date}
                 </p>
-                {/* <motion.a
-                  href={certificate.link}
-                  className="mt-5 px-6 py-2 bg-yellow-300 text-yellow-700 rounded-full font-semibold font-comic-sans hover:bg-yellow-400 transition-all duration-200 shadow-lg"
-                  whileHover={{ scale: 1.1, y: -2 }}
-                >
-                  View Certificate
-                </motion.a> */}
               </div>
             </motion.div>
           ))}
@@ -433,10 +401,18 @@ const Portofolio = () => {
             <div className="flex flex-col gap-6 sm:gap-8">
               <div className="w-full">
                 <div className="relative w-full aspect-[16/9] rounded-xl overflow-hidden bg-gradient-to-br from-pink-200 to-yellow-200 border-4 border-pink-500">
+                  {!imageLoaded[selectedProject.image] && (
+                    <motion.div
+                      className="absolute inset-0 bg-gray-200 rounded-lg"
+                      variants={skeletonVariants}
+                      animate="pulse"
+                    ></motion.div>
+                  )}
                   <img
                     src={selectedProject.image}
                     alt={selectedProject.title}
-                    className="w-full h-full object-cover p-2 sm:p-3 rounded-lg"
+                    className={`w-full h-full object-cover p-2 sm:p-3 rounded-lg ${imageLoaded[selectedProject.image] ? "opacity-100" : "opacity-0"}`}
+                    onLoad={() => handleImageLoad(selectedProject.image)}
                   />
                   <motion.div
                     className="absolute w-16 h-16 bg-yellow-400 rounded-full -top-8 -right-8 opacity-30 blur-2xl"
@@ -491,14 +467,6 @@ const Portofolio = () => {
               >
                 {selectedProject.issuer ? "View Certificate" : "View Project"}
               </a>
-              {/* {selectedProject.tools.length > 0 && (
-                <a
-                  href="#"
-                  className="px-6 sm:px-8 py-2 sm:py-3 bg-pink-300 text-pink-700 rounded-full font-semibold font-comic-sans hover:bg-pink-400 transition-all duration-200 hover:shadow-lg"
-                >
-                  GitHub
-                </a>
-              )} */}
             </div>
           </motion.div>
         </motion.div>
