@@ -1,27 +1,46 @@
 import React, { memo, useState } from "react";
-import { motion, AnimatePresence } from "framer-motion";
-import { FaArrowLeft, FaExternalLinkAlt } from "react-icons/fa";
+import { motion } from "framer-motion";
 
 const projects = [
   {
     title: "Anime Quiz App",
-    description: "A fun, interactive quiz application themed around popular anime series, built with React and Tailwind CSS.",
-    image: "https://via.placeholder.com/600x400?text=Anime+Quiz+App",
+    description: "A fun anime-themed quiz app built with React and Tailwind CSS, offering engaging quizzes for anime fans.",
+    image: "https://via.placeholder.com/1280x720?text=Anime+Quiz+App",
     link: "#",
     tools: ["React", "Tailwind CSS", "Vite"],
+    features: ["Interactive quizzes", "Real-time scoring", "Anime-themed UI"],
   },
   {
     title: "Portfolio Website",
-    description: "A vibrant personal portfolio showcasing my projects, built with React, Framer Motion, and Tailwind CSS.",
-    image: "https://via.placeholder.com/600x400?text=Portfolio+Website",
+    description: "A vibrant portfolio showcasing my projects with React and Framer Motion, designed for a smooth user experience.",
+    image: "https://via.placeholder.com/1280x720?text=Portfolio+Website",
     link: "#",
     tools: ["React", "Framer Motion", "Tailwind CSS"],
+    features: ["Dynamic animations", "Responsive design", "Project showcase"],
   },
   {
     title: "E-Commerce Platform",
-    description: "A responsive e-commerce site with anime merchandise, featuring dynamic filtering and cart functionality.",
-    image: "https://via.placeholder.com/600x400?text=E-Commerce+Platform",
+    description: "A responsive anime merchandise store with dynamic filtering, built with React and Tailwind CSS.",
+    image: "https://via.placeholder.com/1280x720?text=E-Commerce+Platform",
     link: "#",
+    tools: ["React", "Tailwind CSS"],
+    features: ["Product filtering", "Cart system", "Mobile-friendly"],
+  },
+  {
+    title: "Chat Application",
+    description: "A real-time chat app built with React and WebSocket, featuring user authentication.",
+    image: "https://via.placeholder.com/1280x720?text=Chat+Application",
+    link: "#",
+    tools: ["React", "WebSocket", "Tailwind CSS"],
+    features: ["Real-time messaging", "User authentication", "Custom emojis"],
+  },
+  {
+    title: "Task Manager",
+    description: "A task management tool built with React, offering drag-and-drop functionality.",
+    image: "https://via.placeholder.com/1280x720?text=Task+Manager",
+    link: "#",
+    tools: ["React", "Tailwind CSS", "Drag-and-Drop"],
+    features: ["Task prioritization", "Drag-and-drop", "Progress tracking"],
   },
 ];
 
@@ -31,16 +50,34 @@ const Portofolio = () => {
 
   const visibleProjects = showMore ? projects : projects.slice(0, 3);
 
+  const containerVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: { staggerChildren: 0.2, delayChildren: 0.3 },
+    },
+  };
+
+  const cardVariants = {
+    hidden: { opacity: 0, y: 40 },
+    visible: { opacity: 1, y: 0, transition: { duration: 0.7, ease: "easeOut" } },
+  };
+
+  const detailVariants = {
+    hidden: { opacity: 0, scale: 0.95 },
+    visible: { opacity: 1, scale: 1, transition: { duration: 0.5, ease: "easeOut" } },
+  };
+
   return (
     <motion.section
-      className="min-h-screen flex flex-col items-center justify-center px-4 sm:px-8 lg:px-16 pt-20 sm:pt-24 pb-12 sm:pb-20 bg-transparent overflow-x-hidden"
+      className="min-h-screen flex flex-col items-center justify-start px-4 sm:px-8 lg:px-16 pt-20 sm:pt-24 pb-12 sm:pb-20 "
       id="Portofolio"
-      initial={{ opacity: 0, y: 100, scale: 0.95 }}
-      animate={{ opacity: 1, y: 0, scale: 1 }}
+      initial={{ opacity: 0, y: 100 }}
+      animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.8, ease: "easeOut" }}
     >
       <motion.h2
-        className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-yellow-400 mb-12 text-center tracking-tight drop-shadow-md"
+        className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-pink-600 mb-10 text-center tracking-tight drop-shadow-lg"
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.6, delay: 0.2 }}
@@ -49,141 +86,150 @@ const Portofolio = () => {
       </motion.h2>
 
       {/* Project Cards */}
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 w-full max-w-7xl">
+      <motion.div
+        className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 w-full max-w-7xl"
+        variants={containerVariants}
+        initial="hidden"
+        animate="visible"
+      >
         {visibleProjects.map((project, index) => (
           <motion.div
             key={project.title}
-            className="group bg-yellow-50 bg-opacity-80 backdrop-blur-lg rounded-2xl shadow-lg border-l-4 border-yellow-400 overflow-hidden hover:shadow-xl cursor-pointer relative"
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.2 + index * 0.2 }}
-            whileHover={{ scale: 1.05 }}
+            className="bg-white rounded-2xl shadow-lg border-2 border-pink-200 p-6 hover:shadow-xl transition-all duration-300 cursor-pointer relative overflow-hidden"
+            variants={cardVariants}
+            whileHover={{ scale: 1.03, rotate: 0.5, boxShadow: "0 10px 20px rgba(244, 114, 182, 0.2)" }}
+            onClick={() => setSelectedProject(project)}
           >
-            <div className="absolute w-16 h-16 bg-pink-100 rounded-full -top-6 -left-6 opacity-30 blur-xl"></div>
-            <div className="relative h-56 w-full overflow-hidden">
+            <div className="relative w-full aspect-[16/9] overflow-hidden rounded-xl">
               <img
                 src={project.image}
                 alt={project.title}
-                className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+                className="w-full h-full object-cover transition-transform duration-500 hover:scale-105"
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-yellow-400/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+              <div className="absolute inset-0 bg-gradient-to-t from-pink-500/40 to-transparent opacity-0 hover:opacity-100 transition-opacity duration-300" />
             </div>
-            <div className="p-6 text-center">
-              <h3 className="text-xl font-extrabold text-yellow-400 mb-2 tracking-wide">{project.title}</h3>
-              <p className="text-gray-800 text-sm line-clamp-2 leading-relaxed">{project.description}</p>
-              <motion.span
-                className="inline-block mt-4 px-5 py-1 text-sm bg-yellow-300 text-yellow-800 rounded-full font-semibold"
-                whileHover={{ backgroundColor: "#ec4899", color: "#ffffff" }}
-                transition={{ duration: 0.3 }}
+            <div className="mt-5 text-center">
+              <h3 className="text-xl font-bold text-pink-600 mb-3 tracking-wide">{project.title}</h3>
+              <p className="text-gray-700 text-sm line-clamp-2 leading-relaxed">{project.description}</p>
+              <motion.button
+                className="mt-5 px-6 py-2 bg-pink-100 text-pink-600 rounded-full font-semibold hover:bg-pink-200 transition-all duration-200"
+                whileHover={{ scale: 1.1, y: -2 }}
+                onClick={() => setSelectedProject(project)}
               >
                 View Details
-              </motion.span>
+              </motion.button>
             </div>
           </motion.div>
         ))}
-      </div>
-
-      {/* Show More Button */}
-      <motion.div
-        className="mt-12"
-        initial={{ opacity: 0, y: 20 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.6, delay: 0.4 }}
-      >
-        <button
-          onClick={() => setShowMore(!showMore)}
-          className="px-8 py-3 bg-yellow-400 text-yellow-800 font-semibold rounded-full hover:bg-pink-500 hover:text-white transition-all duration-300 shadow-md hover:shadow-lg"
-        >
-          {showMore ? "Show Less" : "Show More"}
-        </button>
       </motion.div>
 
-      {/* Detail Card Modal */}
-      <AnimatePresence>
-        {selectedProject && (
-          <motion.div
-            className="fixed inset-0 z-50 bg-black bg-opacity-60 flex items-center justify-center px-4 py-8"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            transition={{ duration: 0.3 }}
-            onClick={() => setSelectedProject(null)}
+      {/* Show More/Show Less Button */}
+      {projects.length > 3 && (
+        <motion.div
+          className="mt-10"
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.4 }}
+        >
+          <button
+            className="px-8 py-3 bg-pink-500 text-white rounded-full font-semibold hover:bg-pink-600 transition-all duration-200 hover:shadow-lg"
+            onClick={() => setShowMore(!showMore)}
           >
-            <motion.div
-              className="bg-yellow-50 bg-opacity-90 backdrop-blur-lg rounded-2xl shadow-2xl border-l-4 border-yellow-400 max-w-4xl w-full overflow-hidden relative"
-              initial={{ opacity: 0, scale: 0.9, y: 20 }}
-              animate={{ opacity: 1, scale: 1, y: 0 }}
-              exit={{ opacity: 0, scale: 0.9, y: 20 }}
-              transition={{ duration: 0.4, ease: "easeOut" }}
-              onClick={(e) => e.stopPropagation()}
+            {showMore ? "Show Less" : "Show More"}
+          </button>
+        </motion.div>
+      )}
+
+      {/* Project Detail View */}
+      {selectedProject && (
+        <motion.div
+          className="fixed inset-0 z-50 bg-gradient-to-br from-pink-100 to-rose-100 flex items-center justify-center p-4 overflow-y-auto"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          exit={{ opacity: 0 }}
+          transition={{ duration: 0.3 }}
+          onClick={() => setSelectedProject(null)}
+        >
+          <motion.div
+            className="w-full max-w-4xl bg-white rounded-2xl shadow-2xl border-2 border-pink-300 p-8 relative"
+            variants={detailVariants}
+            initial="hidden"
+            animate="visible"
+            exit="hidden"
+            onClick={(e) => e.stopPropagation()}
+          >
+            <button
+              className="absolute top-4 left-4 bg-pink-500 text-white rounded-full p-2 hover:bg-pink-600 transition-colors duration-200"
+              onClick={() => setSelectedProject(null)}
             >
-              <div className="absolute w-16 h-16 bg-pink-100 rounded-full -top-6 -left-6 opacity-30 blur-xl"></div>
-              <div className="relative flex flex-col sm:flex-row">
-                {/* Image */}
-                <div className="sm:w-1/2 w-full h-64 sm:h-96 relative">
+              <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M10 19l-7-7m0 0l7-7m-7 7h18" />
+              </svg>
+            </button>
+            <div className="text-center mb-8">
+              <h2 className="text-4xl font-extrabold text-pink-600 tracking-wide drop-shadow-md">{selectedProject.title}</h2>
+              <p className="text-gray-600 text-sm mt-2">Click outside to return</p>
+            </div>
+            <div className="flex flex-col md:flex-row gap-8">
+              <div className="md:w-1/2">
+                <div className="relative w-full aspect-[16/9] rounded-xl overflow-hidden bg-gradient-to-br from-pink-200 to-rose-200 border-2 border-pink-300">
                   <img
                     src={selectedProject.image}
                     alt={selectedProject.title}
-                    className="w-full h-full object-cover"
+                    className="w-full h-full object-cover p-3 rounded-lg"
                   />
-                  <div className="absolute inset-0 bg-gradient-to-r from-yellow-400/50 to-transparent" />
                 </div>
-
-                {/* Content */}
-                <div className="sm:w-1/2 w-full p-8 flex flex-col justify-between">
-                  <div>
-                    <h3 className="text-2xl sm:text-3xl font-extrabold text-yellow-400 mb-4 tracking-tight drop-shadow-md">{selectedProject.title}</h3>
-                    <p className="text-gray-800 text-base sm:text-lg mb-6 leading-relaxed">{selectedProject.description}</p>
-                    {selectedProject.tools && (
-                      <div className="mb-6">
-                        <h4 className="text-sm font-semibold text-yellow-400 mb-2">Tools:</h4>
-                        <div className="flex flex-wrap gap-2">
-                          {selectedProject.tools.map((tool, index) => (
-                            <motion.span
-                              key={index}
-                              className="px-3 py-1 text-xs bg-pink-300 text-yellow-800 rounded-full font-semibold"
-                              whileHover={{ scale: 1.1, backgroundColor: "#ec4899", color: "#ffffff" }}
-                              transition={{ duration: 0.2 }}
-                            >
-                              {tool}
-                            </motion.span>
-                          ))}
-                        </div>
-                      </div>
-                    )}
-                    <div className="mb-6">
-                      <h4 className="text-sm font-semibold text-yellow-400 mb-2">Project Highlights:</h4>
-                      <ul className="list-disc list-inside text-gray-800 text-sm sm:text-base leading-relaxed">
-                        <li>Designed with a focus on user engagement and accessibility</li>
-                        <li>Optimized for performance across devices</li>
-                        <li>Integrated modern frameworks for scalability</li>
-                      </ul>
-                    </div>
-                  </div>
-                  <motion.a
-                    href={selectedProject.link}
-                    className="inline-flex items-center gap-2 px-6 py-3 bg-yellow-400 text-yellow-800 font-semibold rounded-full hover:bg-pink-500 hover:text-white transition-all duration-300 w-fit"
-                    whileHover={{ scale: 1.05 }}
-                    whileTap={{ scale: 0.95 }}
-                  >
-                    Visit Project <FaExternalLinkAlt />
-                  </motion.a>
-                </div>
-
-                {/* Close Button */}
-                <motion.button
-                  onClick={() => setSelectedProject(null)}
-                  className="absolute top-4 right-4 text-sm px-4 py-2 bg-pink-300 text-yellow-800 font-semibold rounded-full hover:bg-yellow-400 hover:text-pink-800 transition-all duration-300"
-                  whileHover={{ scale: 1.1 }}
-                  whileTap={{ scale: 0.9 }}
-                >
-                  <FaArrowLeft className="inline mr-1" />
-                </motion.button>
               </div>
-            </motion.div>
+              <div className="md:w-1/2 space-y-6">
+                <p className="text-gray-800 text-base leading-relaxed">{selectedProject.description}</p>
+                <div>
+                  <h3 className="text-xl font-bold text-pink-600 mb-3">Tech Stack</h3>
+                  <div className="flex flex-wrap gap-3">
+                    {selectedProject.tools.map((tool, index) => (
+                      <span
+                        key={index}
+                        className="px-4 py-2 bg-pink-100 text-pink-600 rounded-full text-sm font-medium hover:bg-pink-200 transition-colors duration-200"
+                      >
+                        {tool}
+                      </span>
+                    ))}
+                  </div>
+                </div>
+                <div>
+                  <h3 className="text-xl font-bold text-pink-600 mb-3">Awesome Features</h3>
+                  <ul className="list-disc list-inside text-gray-800 text-sm space-y-2">
+                    {selectedProject.features.map((feature, index) => (
+                      <motion.li
+                        key={index}
+                        className="flex items-center gap-2"
+                        initial={{ x: -20, opacity: 0 }}
+                        animate={{ x: 0, opacity: 1 }}
+                        transition={{ delay: index * 0.1 }}
+                      >
+                        <span className="text-pink-500">✨</span> {feature}
+                      </motion.li>
+                    ))}
+                  </ul>
+                </div>
+              </div>
+            </div>
+            <div className="mt-8 flex flex-col sm:flex-row gap-4 justify-center">
+              <a
+                href={selectedProject.link}
+                className="px-8 py-3 bg-pink-500 text-white rounded-full font-semibold hover:bg-pink-600 transition-all duration-200 hover:shadow-lg"
+              >
+                View Project
+              </a>
+              <a
+                href="#"
+                className="px-8 py-3 bg-pink-100 text-pink-600 rounded-full font-semibold hover:bg-pink-200 transition-all duration-200 hover:shadow-lg"
+              >
+                GitHub
+              </a>
+            </div>
           </motion.div>
-        )}
-      </AnimatePresence>
+        </motion.div>
+      )}
     </motion.section>
   );
 };
