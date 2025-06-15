@@ -7,10 +7,9 @@ import Navbar from "./components/Navbar.jsx";
 import Portofolio from "./Pages/Portofolio.jsx";
 import ContactPage from "./Pages/Contact.jsx";
 import WelcomeScreen from "./Pages/WelcomeScreen.jsx";
-import { AnimatePresence } from 'framer-motion';
+import { AnimatePresence, motion } from 'framer-motion';
 import NotFound from "./NotFound.jsx";
 import { FaGithub, FaLinkedin, FaEnvelope } from "react-icons/fa";
-import { motion } from "framer-motion";
 
 function CustomCursor() {
   const [position, setPosition] = useState({ x: 0, y: 0 });
@@ -55,6 +54,9 @@ function CustomCursor() {
         left: `${position.x}px`,
         top: `${position.y}px`,
         transform: `translate(-50%, -50%)`,
+        position: 'fixed',
+        pointerEvents: 'none',
+        zIndex: 9999,
       }}
     />
   );
@@ -70,17 +72,17 @@ const LandingPage = ({ showWelcome, setShowWelcome }) => {
       </AnimatePresence>
 
       {!showWelcome && (
-        <div className="relative w-full min-h-screen bg-transparent overflow-x-hidden font-sans">
+        <div className="relative w-full min-h-screen bg-gradient-to-br from-yellow-50 via-white to-pink-50 overflow-x-hidden font-sans">
           <Navbar />
           <AnimatedBackground />
-          <main className="flex flex-col space-y-16 px-4 sm:px-8 lg:px-16">
+          <main className="flex flex-col space-y-20 px-4 sm:px-8 lg:px-20 max-w-screen-xl mx-auto mt-10">
             <Home />
             <About />
             <Portofolio />
             <ContactPage />
           </main>
           <motion.footer
-            className="mt-16 py-12  text-gray-800 relative"
+            className="mt-16 py-12 text-gray-800 relative"
             initial={{ opacity: 0, y: 50 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, ease: "easeOut" }}
@@ -93,7 +95,6 @@ const LandingPage = ({ showWelcome, setShowWelcome }) => {
                 transition={{ duration: 0.6, delay: 0.2 }}
               >
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-                  {/* About Section */}
                   <motion.div
                     className="text-center md:text-left"
                     initial={{ opacity: 0, x: -20 }}
@@ -106,7 +107,6 @@ const LandingPage = ({ showWelcome, setShowWelcome }) => {
                     </p>
                   </motion.div>
 
-                  {/* Contact Section */}
                   <motion.div
                     className="text-center md:text-left"
                     initial={{ opacity: 0, x: 0 }}
@@ -126,7 +126,6 @@ const LandingPage = ({ showWelcome, setShowWelcome }) => {
                     </ul>
                   </motion.div>
 
-                  {/* Social Links */}
                   <motion.div
                     className="text-center md:text-left"
                     initial={{ opacity: 0, x: 20 }}
@@ -156,12 +155,20 @@ const LandingPage = ({ showWelcome, setShowWelcome }) => {
                 </div>
               </motion.div>
               <motion.div
-                className="mt-8 textesthesi-center text-sm text-gray-500"
+                className="mt-8 text-center text-sm text-gray-500"
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 transition={{ duration: 0.6, delay: 0.8 }}
               >
-                © 2025 Siti Mustagimah. All rights reserved.
+                <a
+                  href="https://nugra.my.id"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-orange-500 hover:underline hover:text-pink-500 transition-colors"
+                >
+                  © 2025 Nugra21.
+                </a>{" "}
+                All rights reserved.
               </motion.div>
             </div>
           </motion.footer>

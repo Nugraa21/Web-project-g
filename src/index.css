@@ -20,6 +20,7 @@ body {
 	overflow-x: hidden;
 	background: #ffffff00;
 	scroll-behavior: smooth !important;
+	cursor: none;
 }
 
 /* === SCROLLBAR STYLE MODERN (Dark Neon) === */
