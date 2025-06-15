@@ -77,10 +77,12 @@ const certificates = [
 
 const Portofolio = () => {
   const [selectedProject, setSelectedProject] = useState(null);
-  const [showMore, setShowMore] = useState(false);
+  const [showMoreProjects, setShowMoreProjects] = useState(false);
+  const [showMoreCertificates, setShowMoreCertificates] = useState(false);
   const [viewMode, setViewMode] = useState("projects"); // "projects" or "certificates"
 
-  const visibleProjects = showMore ? projects : projects.slice(0, 3);
+  const visibleProjects = showMoreProjects ? projects : projects.slice(0, 3);
+  const visibleCertificates = showMoreCertificates ? certificates : certificates.slice(0, 3);
 
   const containerVariants = {
     hidden: { opacity: 0 },
@@ -201,7 +203,7 @@ const Portofolio = () => {
           initial="hidden"
           animate="visible"
         >
-          {certificates.map((certificate, index) => (
+          {visibleCertificates.map((certificate, index) => (
             <motion.div
               key={certificate.title}
               className="bg-transparent backdrop-blur-sm rounded-3xl shadow-xl border-4 border-yellow-500 p-6 relative overflow-hidden group hover:shadow-2xl transition-all duration-300 cursor-pointer"
@@ -253,9 +255,26 @@ const Portofolio = () => {
         >
           <button
             className="px-8 py-3 bg-pink-500 text-white rounded-full font-semibold font-comic-sans hover:bg-pink-600 transition-all duration-200 hover:shadow-lg"
-            onClick={() => setShowMore(!showMore)}
+            onClick={() => setShowMoreProjects(!showMoreProjects)}
           >
-            {showMore ? "Show Less" : "Show More"}
+            {showMoreProjects ? "Show Less" : "Show More"}
+          </button>
+        </motion.div>
+      )}
+
+      {/* Show More/Show Less Button for Certificates */}
+      {viewMode === "certificates" && certificates.length > 3 && (
+        <motion.div
+          className="mt-10"
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.4 }}
+        >
+          <button
+            className="px-8 py-3 bg-yellow-500 text-white rounded-full font-semibold font-comic-sans hover:bg-yellow-600 transition-all duration-200 hover:shadow-lg"
+            onClick={() => setShowMoreCertificates(!showMoreCertificates)}
+          >
+            {showMoreCertificates ? "Show Less" : "Show More"}
           </button>
         </motion.div>
       )}
