@@ -49,7 +49,7 @@ Website portofolio ini menawarkan beragam fitur yang menonjol untuk presentasi y
 Proyek ini dibangun di atas tumpukan teknologi modern berikut:
 
 <p align="center">
-  <img src="https://skillicons.dev/icons?i=react,vite,tailwind,framer,cloudflare,nodejs" />
+  <img src="https://skillicons.dev/icons?i=react,vite,tailwind,cloudflare,nodejs" />
 </p>
 
 * **Frontend Library:** ⚛️ **React.js**
