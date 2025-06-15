@@ -137,14 +137,14 @@ const AboutPage = () => {
             Currently, I’m looking for an internship to sharpen my skills through hands-on collaboration, usability testing, and impactful projects.
           </p>
           <a
-            href="/path/to/siti-mustagimah-cv.pdf"
+            href="./CV/CV Siti Mustagimah Cybersecurity.pdf"
             download
             className="px-8 py-3 bg-pink-600 text-white font-semibold rounded-full hover:bg-yellow-400 hover:text-gray-800 transition-all duration-300 shadow-md hover:shadow-lg hover:scale-105 mb-8"
             data-aos="zoom-in"
             data-aos-duration="800"
             data-aos-delay="700"
           >
-            📄 Download CV
+            Download CV
           </a>
         </motion.div>
       </div>
