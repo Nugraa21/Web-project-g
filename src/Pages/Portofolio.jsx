@@ -102,7 +102,7 @@ const Portofolio = () => {
 
   return (
     <motion.section
-      className="min-h-screen flex flex-col items-center justify-start px-4 sm:px-8 lg:px-16 pt-20 sm:pt-24 pb-12 sm:pb-20 bg-gradient-to-b from-pink-100 to-yellow-100 relative"
+      className="min-h-screen flex flex-col items-center justify-start px-4 sm:px-8 lg:px-16 pt-20 sm:pt-24 pb-16 sm:pb-20  relative"
       id="Portofolio"
       initial={{ opacity: 0, y: 100 }}
       animate={{ opacity: 1, y: 0 }}
@@ -112,12 +112,12 @@ const Portofolio = () => {
       <div className="absolute bottom-0 right-0 w-40 h-40 bg-yellow-300 rounded-full opacity-20 blur-3xl animate-pulse"></div>
 
       <motion.h2
-        className="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-pink-600 mb-10 text-center tracking-tight drop-shadow-lg font-comic-sans"
+        className="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-pink-600 mb-6 text-center tracking-tight drop-shadow-lg font-comic-sans"
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.6, delay: 0.2 }}
       >
-        My Awesome Creations
+        My Awesome Creations!
       </motion.h2>
 
       {/* Toggle Buttons */}
@@ -128,24 +128,16 @@ const Portofolio = () => {
         transition={{ duration: 0.4, delay: 0.3 }}
       >
         <motion.button
-          className={`px-6 py-3 rounded-full font-semibold font-comic-sans text-lg shadow-lg transition-all duration-300 ${
-            viewMode === "projects"
-              ? "bg-pink-600 text-white scale-110"
-              : "bg-pink-200 text-pink-600 hover:bg-pink-300"
-          }`}
+          className={`px-6 py-3 rounded-full font-semibold font-comic-sans text-lg shadow-lg transition-all duration-300 ${viewMode === "projects" ? "bg-pink-600 text-white scale-110" : "bg-pink-200 text-pink-600 hover:bg-pink-300"}`}
           onClick={() => setViewMode("projects")}
-          whileHover={{ scale: 1.1, rotate: 5 }}
+          whileHover={{ scale: 1.1 }}
         >
           Projects
         </motion.button>
         <motion.button
-          className={`px-6 py-3 rounded-full font-semibold font-comic-sans text-lg shadow-lg transition-all duration-300 ${
-            viewMode === "certificates"
-              ? "bg-yellow-500 text-white scale-110"
-              : "bg-yellow-200 text-yellow-600 hover:bg-yellow-300"
-          }`}
+          className={`px-6 py-3 rounded-full font-semibold font-comic-sans text-lg shadow-lg transition-all duration-300 ${viewMode === "certificates" ? "bg-yellow-500 text-white scale-110" : "bg-yellow-200 text-yellow-600 hover:bg-yellow-300"}`}
           onClick={() => setViewMode("certificates")}
-          whileHover={{ scale: 1.1, rotate: 5 }}
+          whileHover={{ scale: 1.1 }}
         >
           Certificates
         </motion.button>
@@ -162,9 +154,9 @@ const Portofolio = () => {
           {visibleProjects.map((project, index) => (
             <motion.div
               key={project.title}
-              className="bg-white rounded-3xl shadow-xl border-4 border-pink-500 p-6 relative overflow-hidden group hover:shadow-2xl transition-all duration-300 cursor-pointer"
+              className="bg-transparent backdrop-blur-sm rounded-3xl shadow-xl border-4 border-pink-500 p-6 relative overflow-hidden group hover:shadow-2xl transition-all duration-300 cursor-pointer"
               variants={cardVariants}
-              whileHover={{ scale: 1.05, rotate: 2, boxShadow: "0 12px 24px rgba(244, 114, 182, 0.4)" }}
+              whileHover={{ scale: 1.05, boxShadow: "0 12px 24px rgba(244, 114, 182, 0.4)" }}
               onClick={() => setSelectedProject(project)}
             >
               <div className="absolute inset-0 bg-gradient-to-br from-pink-200/20 to-yellow-200/20 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
@@ -212,9 +204,9 @@ const Portofolio = () => {
           {certificates.map((certificate, index) => (
             <motion.div
               key={certificate.title}
-              className="bg-white rounded-3xl shadow-xl border-4 border-yellow-500 p-6 relative overflow-hidden group hover:shadow-2xl transition-all duration-300 cursor-pointer"
+              className="bg-transparent backdrop-blur-sm rounded-3xl shadow-xl border-4 border-yellow-500 p-6 relative overflow-hidden group hover:shadow-2xl transition-all duration-300 cursor-pointer"
               variants={cardVariants}
-              whileHover={{ scale: 1.05, rotate: -2, boxShadow: "0 12px 24px rgba(255, 196, 0, 0.4)" }}
+              whileHover={{ scale: 1.05, boxShadow: "0 12px 24px rgba(255, 196, 0, 0.4)" }}
               onClick={() => setSelectedProject({ ...certificate, features: [], tools: [] })}
             >
               <div className="absolute inset-0 bg-gradient-to-br from-yellow-200/20 to-pink-200/20 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
@@ -238,13 +230,13 @@ const Portofolio = () => {
                 <p className="text-gray-700 text-sm line-clamp-2 leading-relaxed font-comic-sans">
                   Issued by {certificate.issuer} on {certificate.date}
                 </p>
-                {/* <motion.a
+                <motion.a
                   href={certificate.link}
                   className="mt-5 px-6 py-2 bg-yellow-300 text-yellow-700 rounded-full font-semibold font-comic-sans hover:bg-yellow-400 transition-all duration-200 shadow-lg"
                   whileHover={{ scale: 1.1, y: -2 }}
                 >
                   View Certificate
-                </motion.a> */}
+                </motion.a>
               </div>
             </motion.div>
           ))}
@@ -279,7 +271,7 @@ const Portofolio = () => {
           onClick={() => setSelectedProject(null)}
         >
           <motion.div
-            className="w-full max-w-2xl bg-white rounded-3xl shadow-2xl border-4 border-pink-500 p-6 sm:p-8 my-10 sm:my-12 relative"
+            className="w-full max-w-2xl bg-transparent backdrop-blur-sm rounded-3xl shadow-2xl border-4 border-pink-500 p-6 sm:p-8 my-10 sm:my-12 relative"
             variants={detailVariants}
             initial="hidden"
             animate="visible"
@@ -293,7 +285,7 @@ const Portofolio = () => {
               <motion.button
                 className="bg-pink-500 text-white rounded-full p-3 hover:bg-pink-600 transition-colors duration-200 shadow-lg"
                 onClick={() => setSelectedProject(null)}
-                whileHover={{ scale: 1.2, rotate: 10 }}
+                whileHover={{ scale: 1.2 }}
               >
                 <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M10 19l-7-7m0 0l7-7m-7 7h18" />
