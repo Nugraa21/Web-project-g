@@ -82,7 +82,7 @@ const LandingPage = ({ showWelcome, setShowWelcome }) => {
                   {/* WEBSITE INFO */}
                   <div>
                     <h4 className="text-xl font-semibold text-pink-600 mb-4 flex items-center gap-2">
-                      <span>🚀</span> Website Info
+                      <span></span> Website Info
                     </h4>
                     <p className="text-sm text-gray-600 mb-4 leading-relaxed">
                       Built with modern web technologies to ensure performance and style.
