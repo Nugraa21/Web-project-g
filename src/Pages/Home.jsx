@@ -65,7 +65,7 @@ const Home = () => {
           animate={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.8, delay: 0.2 }}
         >
-          <h1 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-pink-600 leading-tight tracking-wide  mb-2">
+          <h1 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-pink-600 leading-tight tracking-wide glow-text mb-2">
             Hi, I’m Siti Mustagimah!
           </h1>
 
