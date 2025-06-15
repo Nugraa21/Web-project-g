@@ -79,7 +79,9 @@ const AboutPage = () => {
       animate={{ opacity: 1, y: 0, scale: 1 }}
       transition={{ duration: 0.8, ease: "easeOut" }}
       data-aos="fade-up"
-      data-aos-duration="800"
+      data-aos-duration="1200"
+      data-aos-easing="ease-out"
+      data-aos-anchor-placement="top-center"
     >
       <div className="w-full max-w-7xl flex flex-col lg:flex-row items-center justify-between gap-12">
         {/* Photo Card */}
@@ -89,8 +91,9 @@ const AboutPage = () => {
           animate={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.8, delay: 0.2, ease: "easeOut" }}
           data-aos="fade-right"
-          data-aos-duration="800"
-          data-aos-delay="200"
+          data-aos-duration="1200"
+          data-aos-delay="400"
+          data-aos-easing="ease-out"
         >
           <div className="relative w-full h-96 bg-white rounded-2xl shadow-xl border-4 border-pink-400 overflow-hidden transform group-hover:-translate-y-2 transition-transform duration-500">
             <div
@@ -118,8 +121,9 @@ const AboutPage = () => {
           animate={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.8, delay: 0.4, ease: "easeOut" }}
           data-aos="fade-left"
-          data-aos-duration="800"
-          data-aos-delay="400"
+          data-aos-duration="1200"
+          data-aos-delay="600"
+          data-aos-easing="ease-out"
         >
           <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-yellow-500 mb-6">
             About Me
@@ -137,6 +141,10 @@ const AboutPage = () => {
             href="/path/to/siti-mustagimah-cv.pdf"
             download
             className="px-8 py-3 bg-pink-600 text-white font-semibold rounded-full hover:bg-yellow-400 hover:text-gray-800 transition-all duration-300 shadow-md hover:shadow-lg hover:scale-105 mb-8"
+            data-aos="zoom-in"
+            data-aos-duration="1000"
+            data-aos-delay="800"
+            data-aos-easing="ease-out"
           >
             📄 Download CV
           </a>
@@ -150,8 +158,9 @@ const AboutPage = () => {
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.8, delay: 0.6, ease: "easeOut" }}
         data-aos="fade-up"
-        data-aos-duration="800"
-        data-aos-delay="600"
+        data-aos-duration="1200"
+        data-aos-delay="1000"
+        data-aos-easing="ease-out"
       >
         {skills.map((skill, index) => (
           <motion.div
@@ -162,8 +171,9 @@ const AboutPage = () => {
             transition={{ duration: 0.6, delay: index * 0.15, ease: "easeOut" }}
             whileHover={{ scale: 1.07, boxShadow: "0 10px 20px rgba(244, 114, 182, 0.3)" }}
             data-aos="fade-up"
-            data-aos-duration="600"
-            data-aos-delay={index * 150}
+            data-aos-duration="1000"
+            data-aos-delay={1200 + index * 250}
+            data-aos-easing="ease-out"
           >
             <div className="absolute inset-0 bg-gradient-to-r from-pink-500/10 to-yellow-500/10 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
             <div className="absolute w-32 h-32 bg-pink-400 rounded-full -top-16 -right-16 opacity-20 blur-3xl group-hover:opacity-30 transition-opacity duration-300"></div>
@@ -202,8 +212,9 @@ const AboutPage = () => {
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.8, delay: 0.8, ease: "easeOut" }}
         data-aos="fade-up"
-        data-aos-duration="800"
-        data-aos-delay="800"
+        data-aos-duration="1200"
+        data-aos-delay="1500"
+        data-aos-easing="ease-out"
       >
         <motion.h2
           className="text-3xl sm:text-4xl font-bold text-yellow-500 mb-10 text-center tracking-tight drop-shadow-lg"
@@ -211,8 +222,9 @@ const AboutPage = () => {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.9 }}
           data-aos="zoom-in"
-          data-aos-duration="600"
-          data-aos-delay="900"
+          data-aos-duration="1000"
+          data-aos-delay="1600"
+          data-aos-easing="ease-out"
         >
           Tools & Technologies
         </motion.h2>
@@ -226,8 +238,9 @@ const AboutPage = () => {
               transition={{ duration: 0.6, delay: index * 0.1, ease: "easeOut" }}
               whileHover={{ scale: 1.07, boxShadow: "0 10px 20px rgba(255, 196, 0, 0.3)" }}
               data-aos="fade-up"
-              data-aos-duration="600"
-              data-aos-delay={index * 100}
+              data-aos-duration="1000"
+              data-aos-delay={1700 + index * 200}
+              data-aos-easing="ease-out"
             >
               <div className="absolute inset-0 bg-gradient-to-r from-yellow-500/10 to-pink-500/10 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
               <div className="absolute w-24 h-24 bg-yellow-400 rounded-full -top-12 -right-12 opacity-20 blur-3xl group-hover:opacity-30 transition-opacity duration-300"></div>
