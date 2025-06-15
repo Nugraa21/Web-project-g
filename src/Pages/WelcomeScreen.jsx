@@ -98,7 +98,7 @@ const WelcomeScreen = ({ onLoadingComplete }) => {
                 </div>
               </motion.div>
 
-              <motion.div
+              {/* <motion.div
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.3 }}
@@ -107,7 +107,7 @@ const WelcomeScreen = ({ onLoadingComplete }) => {
                   <Globe className="text-pink-500 w-5 h-5" />
                   <TypewriterEffect text="Siti Mustagimah." />
                 </div>
-              </motion.div>
+              </motion.div> */}
             </motion.div>
           </div>
         </motion.div>
