@@ -18,7 +18,7 @@ const TypewriterEffect = ({ text }) => {
   }, [text]);
 
   return (
-    <span className="font-mono text-orange-600 tracking-wider">
+    <span className="font-mono text-pink-500 tracking-wider">
       {displayText}
       <span className="animate-pulse">|</span>
     </span>
@@ -27,20 +27,10 @@ const TypewriterEffect = ({ text }) => {
 
 const AuroraBackground = () => (
   <div className="absolute inset-0 -z-10">
-    <div className="w-full h-full bg-[url('https://www.transparenttextures.com/patterns/pencil.png')] bg-repeat bg-white" />
-    <div className="absolute w-[500px] h-[500px] bg-orange-300 rounded-full blur-3xl opacity-30 animate-float top-10 left-10" />
-    <div className="absolute w-[400px] h-[400px] bg-yellow-200 rounded-full blur-2xl opacity-20 animate-float-slow bottom-10 right-10" />
+    <div className="w-full h-full bg-[url('https://www.transparenttextures.com/patterns/cubes.png')] bg-repeat bg-pink-50" />
+    <div className="absolute w-[500px] h-[500px] bg-pink-300 rounded-full blur-3xl opacity-30 animate-float top-10 left-10" />
+    <div className="absolute w-[400px] h-[400px] bg-yellow-200 rounded-full blur-2xl opacity-30 animate-float-slow bottom-10 right-10" />
   </div>
-);
-
-const IconButton = ({ Icon }) => (
-  <motion.div
-    whileHover={{ scale: 1.2, rotate: 3 }}
-    transition={{ type: "spring", stiffness: 300 }}
-    className="relative p-4 bg-white/40 backdrop-blur-md rounded-full border border-white shadow-xl border-dashed border-2"
-  >
-    <Icon className="text-orange-600 w-6 h-6 sm:w-7 sm:h-7" />
-  </motion.div>
 );
 
 const WelcomeScreen = ({ onLoadingComplete }) => {
@@ -54,7 +44,7 @@ const WelcomeScreen = ({ onLoadingComplete }) => {
         clearInterval(interval);
         return 100;
       });
-    }, 40);
+    }, 35);
     return () => clearInterval(interval);
   }, []);
 
@@ -63,7 +53,7 @@ const WelcomeScreen = ({ onLoadingComplete }) => {
       setTimeout(() => {
         setIsLoading(false);
         setTimeout(() => onLoadingComplete?.(), 1000);
-      }, 500);
+      }, 600);
     }
   }, [progress, onLoadingComplete]);
 
@@ -71,7 +61,7 @@ const WelcomeScreen = ({ onLoadingComplete }) => {
     <AnimatePresence>
       {isLoading && (
         <motion.div
-          className="fixed inset-0 bg-white text-gray-800 z-50 font-handwritten"
+          className="fixed inset-0 bg-pink-50 text-gray-900 z-50 font-handwritten"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           exit={{
@@ -89,27 +79,18 @@ const WelcomeScreen = ({ onLoadingComplete }) => {
               transition={{ duration: 0.8, ease: 'easeOut' }}
               className="text-center space-y-10 max-w-3xl mx-auto"
             >
-              {/* <motion.h1
-                className="text-4xl sm:text-5xl font-bold text-orange-700 underline decoration-dashed decoration-4"
-                initial={{ scale: 0.9, opacity: 0 }}
-                animate={{ scale: 1, opacity: 1 }}
-                transition={{ delay: 0.8, duration: 0.7 }}
-              >
-                Selamat Datang di Dunia Nugra!
-              </motion.h1> */}
-
               <motion.div
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 transition={{ delay: 1.2 }}
                 className="w-full max-w-md mx-auto"
               >
-                <div className="mb-3 text-lg text-orange-600 font-medium tracking-wide">
-                  Loading... {progress}%
+                <div className="mb-3 text-lg text-pink-600 font-semibold tracking-wide animate-bounce">
+                  Loading Experience... {progress}%
                 </div>
-                <div className="w-full h-3 bg-gray-200 rounded-full overflow-hidden shadow-inner">
+                <div className="w-full h-3 bg-yellow-100 rounded-full overflow-hidden shadow-inner">
                   <motion.div
-                    className="h-full bg-gradient-to-r from-orange-500 to-orange-600"
+                    className="h-full bg-gradient-to-r from-pink-400 via-pink-500 to-yellow-300"
                     initial={{ width: '0%' }}
                     animate={{ width: `${progress}%` }}
                     transition={{ ease: 'easeInOut', duration: 0.4 }}
@@ -122,13 +103,10 @@ const WelcomeScreen = ({ onLoadingComplete }) => {
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.3 }}
               >
-                <a
-                  href="https://www.nugra.my.id"
-                  className="inline-flex items-center gap-3 px-6 py-3 bg-white border-2 border-dashed border-orange-300 rounded-full shadow hover:scale-105 transition font-handwritten"
-                >
-                  <Globe className="text-orange-500 w-5 h-5" />
-                  <TypewriterEffect text="www.nugra.my.id" />
-                </a>
+                <div className="inline-flex items-center gap-3 px-6 py-3 bg-white border-2 border-dashed border-pink-300 rounded-full shadow hover:scale-105 transition font-handwritten">
+                  <Globe className="text-pink-500 w-5 h-5" />
+                  <TypewriterEffect text="Siti Mustagimah." />
+                </div>
               </motion.div>
             </motion.div>
           </div>
