@@ -143,7 +143,7 @@ const Portofolio = () => {
       {/* Project Detail View */}
       {selectedProject && (
         <motion.div
-          className="fixed inset-0 z-50 bg-gradient-to-br from-pink-100 to-rose-100 flex items-center justify-center p-4 overflow-y-auto"
+          className="fixed inset-0 z-50 bg-gradient-to-br from-pink-100 to-rose-100 flex items-center justify-center p-4 sm:p-6 overflow-y-auto"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
@@ -151,7 +151,7 @@ const Portofolio = () => {
           onClick={() => setSelectedProject(null)}
         >
           <motion.div
-            className="w-full max-w-4xl bg-white rounded-2xl shadow-2xl border-2 border-pink-300 p-8 relative"
+            className="w-full max-w-4xl bg-white rounded-2xl shadow-2xl border-2 border-pink-300 p-6 sm:p-8 relative"
             variants={detailVariants}
             initial="hidden"
             animate="visible"
@@ -166,29 +166,29 @@ const Portofolio = () => {
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M10 19l-7-7m0 0l7-7m-7 7h18" />
               </svg>
             </button>
-            <div className="text-center mb-8">
-              <h2 className="text-4xl font-extrabold text-pink-600 tracking-wide drop-shadow-md">{selectedProject.title}</h2>
-              <p className="text-gray-600 text-sm mt-2">Click outside to return</p>
+            <div className="text-center mb-6 sm:mb-8">
+              <h2 className="text-3xl sm:text-4xl font-extrabold text-pink-600 tracking-wide drop-shadow-md">{selectedProject.title}</h2>
+              <p className="text-gray-600 text-xs sm:text-sm mt-2">Click outside to return</p>
             </div>
-            <div className="flex flex-col md:flex-row gap-8">
-              <div className="md:w-1/2">
+            <div className="flex flex-col gap-6 sm:gap-8">
+              <div className="w-full">
                 <div className="relative w-full aspect-[16/9] rounded-xl overflow-hidden bg-gradient-to-br from-pink-200 to-rose-200 border-2 border-pink-300">
                   <img
                     src={selectedProject.image}
                     alt={selectedProject.title}
-                    className="w-full h-full object-cover p-3 rounded-lg"
+                    className="w-full h-full object-cover p-2 sm:p-3 rounded-lg"
                   />
                 </div>
               </div>
-              <div className="md:w-1/2 space-y-6">
-                <p className="text-gray-800 text-base leading-relaxed">{selectedProject.description}</p>
+              <div className="w-full space-y-6">
+                <p className="text-gray-800 text-sm sm:text-base leading-relaxed">{selectedProject.description}</p>
                 <div>
-                  <h3 className="text-xl font-bold text-pink-600 mb-3">Tech Stack</h3>
-                  <div className="flex flex-wrap gap-3">
+                  <h3 className="text-lg sm:text-xl font-bold text-pink-600 mb-3">Tech Stack</h3>
+                  <div className="flex flex-wrap gap-2 sm:gap-3">
                     {selectedProject.tools.map((tool, index) => (
                       <span
                         key={index}
-                        className="px-4 py-2 bg-pink-100 text-pink-600 rounded-full text-sm font-medium hover:bg-pink-200 transition-colors duration-200"
+                        className="px-3 sm:px-4 py-1 sm:py-2 bg-pink-100 text-pink-600 rounded-full text-xs sm:text-sm font-medium hover:bg-pink-200 transition-colors duration-200"
                       >
                         {tool}
                       </span>
@@ -196,8 +196,8 @@ const Portofolio = () => {
                   </div>
                 </div>
                 <div>
-                  <h3 className="text-xl font-bold text-pink-600 mb-3">Awesome Features</h3>
-                  <ul className="list-disc list-inside text-gray-800 text-sm space-y-2">
+                  <h3 className="text-lg sm:text-xl font-bold text-pink-600 mb-3">Awesome Features</h3>
+                  <ul className="list-disc list-inside text-gray-800 text-xs sm:text-sm space-y-2">
                     {selectedProject.features.map((feature, index) => (
                       <motion.li
                         key={index}
@@ -213,16 +213,16 @@ const Portofolio = () => {
                 </div>
               </div>
             </div>
-            <div className="mt-8 flex flex-col sm:flex-row gap-4 justify-center">
+            <div className="mt-6 sm:mt-8 flex flex-col sm:flex-row gap-4 justify-center">
               <a
                 href={selectedProject.link}
-                className="px-8 py-3 bg-pink-500 text-white rounded-full font-semibold hover:bg-pink-600 transition-all duration-200 hover:shadow-lg"
+                className="px-6 sm:px-8 py-2 sm:py-3 bg-pink-500 text-white rounded-full font-semibold hover:bg-pink-600 transition-all duration-200 hover:shadow-lg"
               >
                 View Project
               </a>
               <a
                 href="#"
-                className="px-8 py-3 bg-pink-100 text-pink-600 rounded-full font-semibold hover:bg-pink-200 transition-all duration-200 hover:shadow-lg"
+                className="px-6 sm:px-8 py-2 sm:py-3 bg-pink-100 text-pink-600 rounded-full font-semibold hover:bg-pink-200 transition-all duration-200 hover:shadow-lg"
               >
                 GitHub
               </a>
