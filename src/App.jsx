@@ -11,54 +11,35 @@ import { AnimatePresence, motion } from 'framer-motion';
 import NotFound from "./NotFound.jsx";
 import { FaGithub, FaLinkedin, FaEnvelope } from "react-icons/fa";
 
+// ✅ Optimized custom cursor (no lag)
 function CustomCursor() {
-  const [position, setPosition] = useState({ x: 0, y: 0 });
-  const [hovered, setHovered] = useState(false);
+  const [coords, setCoords] = useState({ x: 0, y: 0 });
 
   useEffect(() => {
-    const moveCursor = (e) => {
-      setPosition({ x: e.clientX, y: e.clientY });
-    };
-
-    const addHoverEvents = () => {
-      const interactiveElements = document.querySelectorAll('a, button, input, textarea, select, label, [role="button"]');
-      const handleMouseEnter = () => setHovered(true);
-      const handleMouseLeave = () => setHovered(false);
-
-      interactiveElements.forEach(el => {
-        el.addEventListener('mouseenter', handleMouseEnter);
-        el.addEventListener('mouseleave', handleMouseLeave);
+    const update = (e) => {
+      requestAnimationFrame(() => {
+        setCoords({ x: e.clientX, y: e.clientY });
       });
-
-      return () => {
-        interactiveElements.forEach(el => {
-          el.removeEventListener('mouseenter', handleMouseEnter);
-          el.removeEventListener('mouseleave', handleMouseLeave);
-        });
-      };
     };
 
-    window.addEventListener("mousemove", moveCursor);
-    const cleanupHover = addHoverEvents();
-
-    return () => {
-      window.removeEventListener("mousemove", moveCursor);
-      cleanupHover();
-    };
+    window.addEventListener('mousemove', update);
+    return () => window.removeEventListener('mousemove', update);
   }, []);
 
   return (
     <div
-      className={`custom-cursor ${hovered ? 'hovered' : ''} hidden sm:block bg-yellow-400 rounded-full w-8 h-8 border-2 border-pink-500 shadow-lg transition-transform duration-100 ease-out ${hovered ? 'scale-125' : 'scale-100'}`}
-      style={{
-        left: `${position.x}px`,
-        top: `${position.y}px`,
-        transform: `translate(-50%, -50%)`,
-        position: 'fixed',
-        pointerEvents: 'none',
-        zIndex: 9999,
-      }}
-    />
+      className="fixed top-0 left-0 w-full h-full pointer-events-none z-[9999] hidden sm:block"
+    >
+      <div
+        className="w-4 h-4 rounded-full bg-yellow-400 border border-pink-500 shadow-md"
+        style={{
+          position: 'absolute',
+          transform: 'translate(-50%, -50%)',
+          left: coords.x,
+          top: coords.y,
+        }}
+      />
+    </div>
   );
 }
 
@@ -66,110 +47,86 @@ const LandingPage = ({ showWelcome, setShowWelcome }) => {
   return (
     <>
       <AnimatePresence mode="wait">
-        {showWelcome && (
-          <WelcomeScreen onLoadingComplete={() => setShowWelcome(false)} />
-        )}
+        {showWelcome && <WelcomeScreen onLoadingComplete={() => setShowWelcome(false)} />}
       </AnimatePresence>
 
       {!showWelcome && (
-        <div className="relative w-full min-h-screen bg-gradient-to-br from-yellow-50 via-white to-pink-50 overflow-x-hidden font-sans">
+        <div className="relative w-full min-h-screen bg-transparent overflow-x-hidden font-sans">
           <Navbar />
           <AnimatedBackground />
-          <main className="flex flex-col space-y-20 px-4 sm:px-8 lg:px-20 max-w-screen-xl mx-auto mt-10">
+          <main className="flex flex-col space-y-16 px-4 sm:px-8 lg:px-16">
             <Home />
             <About />
             <Portofolio />
             <ContactPage />
           </main>
+
+          {/* Footer */}
           <motion.footer
-            className="mt-16 py-12 text-gray-800 relative"
-            initial={{ opacity: 0, y: 50 }}
+            className="mt-16 py-12 bg-transparent text-gray-800"
+            initial={{ opacity: 0, y: 40 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, ease: "easeOut" }}
+            transition={{ duration: 0.8 }}
           >
             <div className="container mx-auto px-4 sm:px-8 lg:px-16 max-w-6xl">
-              <motion.div
-                className="bg-white/90 rounded-2xl shadow-lg border border-pink-200 p-8"
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6, delay: 0.2 }}
-              >
+              <div className="bg-white/80 rounded-xl shadow-md p-8 border border-pink-300">
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-                  <motion.div
-                    className="text-center md:text-left"
-                    initial={{ opacity: 0, x: -20 }}
-                    animate={{ opacity: 1, x: 0 }}
-                    transition={{ duration: 0.6, delay: 0.4 }}
-                  >
-                    <h3 className="text-lg font-semibold text-pink-600 mb-2 tracking-tight">About Gema</h3>
-                    <p className="text-gray-600 text-sm leading-relaxed">
+                  
+                  {/* About */}
+                  <div>
+                    <h3 className="text-lg font-bold text-pink-600 mb-2">About Gema</h3>
+                    <p className="text-gray-600 text-sm">
                       Siti Mustagimah, a Digital Media student creating intuitive UI/UX designs with creativity and empathy.
                     </p>
-                  </motion.div>
+                  </div>
 
-                  <motion.div
-                    className="text-center md:text-left"
-                    initial={{ opacity: 0, x: 0 }}
-                    animate={{ opacity: 1, x: 0 }}
-                    transition={{ duration: 0.6, delay: 0.5 }}
-                  >
-                    <h3 className="text-lg font-semibold text-pink-600 mb-2 tracking-tight">Get in Touch</h3>
+                  {/* Contact */}
+                  <div>
+                    <h3 className="text-lg font-bold text-pink-600 mb-2">Get in Touch</h3>
                     <ul className="space-y-2 text-sm text-gray-600">
-                      <li className="flex items-center gap-2 justify-center md:justify-start">
-                        <FaEnvelope className="text-pink-500 text-lg" />
+                      <li className="flex items-center gap-2">
+                        <FaEnvelope className="text-pink-500" />
                         siti.mustagimah@students.ac.id
                       </li>
-                      <li className="flex items-center gap-2 justify-center md:justify-start">
-                        <span className="text-pink-500 text-lg">📍</span>
-                        Yogyakarta, Indonesia
+                      <li className="flex items-center gap-2">
+                        <span className="text-pink-500">📍</span> Yogyakarta, Indonesia
                       </li>
                     </ul>
-                  </motion.div>
+                  </div>
 
-                  <motion.div
-                    className="text-center md:text-left"
-                    initial={{ opacity: 0, x: 20 }}
-                    animate={{ opacity: 1, x: 0 }}
-                    transition={{ duration: 0.6, delay: 0.6 }}
-                  >
-                    <h3 className="text-lg font-semibold text-pink-600 mb-2 tracking-tight">Follow Me</h3>
-                    <div className="flex gap-4 justify-center md:justify-start">
-                      <motion.a
+                  {/* Social */}
+                  <div>
+                    <h3 className="text-lg font-bold text-pink-600 mb-2">Follow Me</h3>
+                    <div className="flex gap-4">
+                      <a
                         href="https://github.com/sitimustagimah"
-                        className="text-pink-500 bg-pink-100 p-2.5 rounded-full hover:bg-pink-500 hover:text-white transition-all duration-300"
-                        whileHover={{ scale: 1.15, rotate: 5 }}
-                        transition={{ duration: 0.3 }}
+                        target="_blank"
+                        className="text-pink-600 bg-pink-100 p-3 rounded-full hover:bg-pink-500 hover:text-white transition-all"
                       >
-                        <FaGithub size={24} />
-                      </motion.a>
-                      <motion.a
+                        <FaGithub size={20} />
+                      </a>
+                      <a
                         href="https://linkedin.com/in/sitimustagimah"
-                        className="text-pink-500 bg-pink-100 p-2.5 rounded-full hover:bg-pink-500 hover:text-white transition-all duration-300"
-                        whileHover={{ scale: 1.15, rotate: -5 }}
-                        transition={{ duration: 0.3 }}
+                        target="_blank"
+                        className="text-pink-600 bg-pink-100 p-3 rounded-full hover:bg-pink-500 hover:text-white transition-all"
                       >
-                        <FaLinkedin size={24} />
-                      </motion.a>
+                        <FaLinkedin size={20} />
+                      </a>
                     </div>
-                  </motion.div>
+                  </div>
                 </div>
-              </motion.div>
-              <motion.div
-                className="mt-8 text-center text-sm text-gray-500"
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                transition={{ duration: 0.6, delay: 0.8 }}
-              >
+              </div>
+
+              <div className="mt-8 text-center text-sm text-gray-500">
                 <a
                   href="https://nugra.my.id"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-orange-500 hover:underline hover:text-pink-500 transition-colors"
+                  className="text-pink-500 font-semibold hover:underline"
                 >
-                  © 2025 Nugra21.
-                </a>{" "}
-                All rights reserved.
-              </motion.div>
+                  © 2025 Nugra21
+                </a> — All rights reserved.
+              </div>
             </div>
           </motion.footer>
         </div>
@@ -186,10 +143,7 @@ function App() {
       <CustomCursor />
       <BrowserRouter>
         <Routes>
-          <Route
-            path="/"
-            element={<LandingPage showWelcome={showWelcome} setShowWelcome={setShowWelcome} />}
-          />
+          <Route path="/" element={<LandingPage showWelcome={showWelcome} setShowWelcome={setShowWelcome} />} />
           <Route path="/contact" element={<ContactPage />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
