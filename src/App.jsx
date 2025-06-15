@@ -9,6 +9,8 @@ import ContactPage from "./Pages/Contact.jsx";
 import WelcomeScreen from "./Pages/WelcomeScreen.jsx";
 import { AnimatePresence } from 'framer-motion';
 import NotFound from "./NotFound.jsx";
+import { FaGithub, FaLinkedin, FaEnvelope } from "react-icons/fa";
+import { motion } from "framer-motion";
 
 function CustomCursor() {
   const [position, setPosition] = useState({ x: 0, y: 0 });
@@ -48,7 +50,7 @@ function CustomCursor() {
 
   return (
     <div
-      className={`custom-cursor ${hovered ? 'hovered' : ''} hidden sm:block bg-pink-300 rounded-full w-8 h-8 border-2 border-yellow-400 shadow-lg transition-transform duration-100 ease-out ${hovered ? 'scale-125' : 'scale-100'}`}
+      className={`custom-cursor ${hovered ? 'hovered' : ''} hidden sm:block bg-yellow-400 rounded-full w-8 h-8 border-2 border-pink-500 shadow-lg transition-transform duration-100 ease-out ${hovered ? 'scale-125' : 'scale-100'}`}
       style={{
         left: `${position.x}px`,
         top: `${position.y}px`,
@@ -68,7 +70,7 @@ const LandingPage = ({ showWelcome, setShowWelcome }) => {
       </AnimatePresence>
 
       {!showWelcome && (
-        <div className="relative w-full min-h-screen bg-gradient-to-b from-white to-pink-100 overflow-x-hidden font-sans">
+        <div className="relative w-full min-h-screen bg-transparent overflow-x-hidden font-sans">
           <Navbar />
           <AnimatedBackground />
           <main className="flex flex-col space-y-16 px-4 sm:px-8 lg:px-16">
@@ -77,11 +79,94 @@ const LandingPage = ({ showWelcome, setShowWelcome }) => {
             <Portofolio />
             <ContactPage />
           </main>
-          <footer className="mt-16 py-8 bg-pink-50 border-t-4 border-yellow-400 text-gray-800 text-center text-sm font-semibold">
-            <div className="container mx-auto px-4">
-              © 2025 Ludang Prasetyo Nugroho. All rights reserved.
+          <motion.footer
+            className="mt-16 py-12 bg-transparent backdrop-blur-lg text-gray-800 relative overflow-hidden"
+            initial={{ opacity: 0, y: 50 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, ease: "easeOut" }}
+          >
+            <div className="absolute w-16 h-16 bg-yellow-100 rounded-full -top-6 -left-6 opacity-30 blur-xl animate-pulse"></div>
+            <div className="absolute w-12 h-12 bg-pink-100 rounded-full -bottom-4 -right-4 opacity-30 blur-xl animate-pulse"></div>
+            <div className="container mx-auto px-4 sm:px-8 lg:px-16 max-w-7xl">
+              <motion.div
+                className="bg-white rounded-2xl shadow-lg p-8 border-l-4 border-pink-400"
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6, delay: 0.2 }}
+              >
+                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+                  {/* About Gema */}
+                  <motion.div
+                    className="text-center sm:text-left"
+                    initial={{ opacity: 0, x: -20 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    transition={{ duration: 0.6, delay: 0.4 }}
+                  >
+                    <h3 className="text-2xl font-extrabold text-pink-600 mb-4 tracking-tight drop-shadow-md">About Gema</h3>
+                    <p className="text-gray-700 text-sm sm:text-base leading-relaxed">
+                      Gema, aka Siti Mustagimah, is a Digital Media student with a passion for UI/UX design. Focused on creating delightful and impactful digital experiences through empathy and creativity.
+                    </p>
+                  </motion.div>
+
+                  {/* Contact Info */}
+                  <motion.div
+                    className="text-center sm:text-left"
+                    initial={{ opacity: 0, x: 0 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    transition={{ duration: 0.6, delay: 0.6 }}
+                  >
+                    <h3 className="text-2xl font-extrabold text-pink-600 mb-4 tracking-tight drop-shadow-md">Get in Touch</h3>
+                    <ul className="space-y-3 text-sm sm:text-base text-gray-700">
+                      <li className="flex items-center gap-3 justify-center sm:justify-start">
+                        <FaEnvelope className="text-pink-500 text-xl" />
+                        siti.mustagimah@students.ac.id
+                      </li>
+                      <li className="flex items-center gap-3 justify-center sm:justify-start">
+                        <span className="text-pink-500 text-xl">📍</span>
+                        Yogyakarta, Indonesia
+                      </li>
+                    </ul>
+                  </motion.div>
+
+                  {/* Social Links */}
+                  <motion.div
+                    className="text-center sm:text-left"
+                    initial={{ opacity: 0, x: 20 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    transition={{ duration: 0.6, delay: 0.8 }}
+                  >
+                    <h3 className="text-2xl font-extrabold text-pink-600 mb-4 tracking-tight drop-shadow-md">Follow Gema</h3>
+                    <div className="flex gap-4 justify-center sm:justify-start">
+                      <motion.a
+                        href="https://github.com/sitimustagimah"
+                        className="text-pink-500 bg-pink-100 p-2 rounded-full"
+                        whileHover={{ scale: 1.2, backgroundColor: "#ec4899", color: "#ffffff" }}
+                        transition={{ duration: 0.2 }}
+                      >
+                        <FaGithub size={24} />
+                      </motion.a>
+                      <motion.a
+                        href="https://linkedin.com/in/sitimustagimah"
+                        className="text-pink-500 bg-pink-100 p-2 rounded-full"
+                        whileHover={{ scale: 1.2, backgroundColor: "#ec4899", color: "#ffffff" }}
+                        transition={{ duration: 0.2 }}
+                      >
+                        <FaLinkedin size={24} />
+                      </motion.a>
+                    </div>
+                  </motion.div>
+                </div>
+                <motion.div
+                  className="mt-8 pt-6 text-center text-sm font-semibold text-gray-700 border-t border-pink-400"
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  transition={{ duration: 0.6, delay: 1.0 }}
+                >
+                  © 2025 Gema (Siti Mustagimah). All rights reserved.
+                </motion.div>
+              </motion.div>
             </div>
-          </footer>
+          </motion.footer>
         </div>
       )}
     </>
@@ -92,7 +177,7 @@ function App() {
   const [showWelcome, setShowWelcome] = useState(true);
 
   return (
-    <div className="w-full min-h-screen bg-white overflow-x-hidden">
+    <div className="w-full min-h-screen bg-transparent overflow-x-hidden">
       <CustomCursor />
       <BrowserRouter>
         <Routes>

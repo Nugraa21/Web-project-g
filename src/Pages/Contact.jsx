@@ -78,16 +78,16 @@ const ContactPage = () => {
             Contact Info
           </h2>
           <p className="text-lg sm:text-xl text-gray-800 mb-6 leading-relaxed">
-            I’m <span className="text-pink-600 font-semibold">Ludang Prasetyo Nugroho</span>, a Computer Engineering student at UTDI Yogyakarta. Let's connect and build something awesome together!
+            I’m <span className="text-pink-600 font-semibold">Siti Mustagimah</span>, a Computer Engineering student at UTDI Yogyakarta. Let's connect and build something awesome together!
           </p>
           <ul className="space-y-4 text-lg sm:text-xl text-gray-800 mb-6">
             <li className="flex items-center gap-3">
               <FaUser className="text-pink-400 text-2xl" />
-              Ludang Prasetyo Nugroho
+              " Siti Mustagimah "
             </li>
             <li className="flex items-center gap-3">
               <FaEnvelope className="text-pink-400 text-2xl" />
-              ludang.prasetyo@students.utdi.ac.id
+              mustagimahsiti@gmail.com
             </li>
             <li className="flex items-center gap-3">
               <span className="text-pink-400 text-2xl">📍</span>

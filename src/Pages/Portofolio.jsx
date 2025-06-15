@@ -33,42 +33,47 @@ const Portofolio = () => {
 
   return (
     <motion.section
-      className="min-h-screen flex flex-col items-center justify-center px-4 sm:px-8 lg:px-16 pt-20 pb-24 bg-transparent overflow-hidden"
+      className="min-h-screen flex flex-col items-center justify-center px-4 sm:px-8 lg:px-16 pt-20 sm:pt-24 pb-12 sm:pb-20 bg-transparent overflow-x-hidden"
       id="Portofolio"
-      initial={{ opacity: 0, y: 50 }}
-      animate={{ opacity: 1, y: 0 }}
+      initial={{ opacity: 0, y: 100, scale: 0.95 }}
+      animate={{ opacity: 1, y: 0, scale: 1 }}
       transition={{ duration: 0.8, ease: "easeOut" }}
     >
-      <h2 className="text-4xl sm:text-5xl font-extrabold text-pink-500 mb-10 text-center drop-shadow-md tracking-tight">
+      <motion.h2
+        className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-yellow-400 mb-12 text-center tracking-tight drop-shadow-md"
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.6, delay: 0.2 }}
+      >
         My Projects
-      </h2>
+      </motion.h2>
 
       {/* Project Cards */}
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 w-full max-w-7xl">
         {visibleProjects.map((project, index) => (
           <motion.div
             key={project.title}
-            className="group bg-pink-50 bg-opacity-80 rounded-2xl shadow-lg border-2 border-pink-300 overflow-hidden hover:shadow-xl cursor-pointer"
+            className="group bg-yellow-50 bg-opacity-80 backdrop-blur-lg rounded-2xl shadow-lg border-l-4 border-yellow-400 overflow-hidden hover:shadow-xl cursor-pointer relative"
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.2 + index * 0.2 }}
-            whileHover={{ scale: 1.03 }}
-            onClick={() => setSelectedProject(project)}
+            whileHover={{ scale: 1.05 }}
           >
-            <div className="relative h-52 w-full overflow-hidden">
+            <div className="absolute w-16 h-16 bg-pink-100 rounded-full -top-6 -left-6 opacity-30 blur-xl"></div>
+            <div className="relative h-56 w-full overflow-hidden">
               <img
                 src={project.image}
                 alt={project.title}
-                className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-pink-500/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+              <div className="absolute inset-0 bg-gradient-to-t from-yellow-400/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
             </div>
-            <div className="p-5 text-center">
-              <h3 className="text-xl font-bold text-pink-500 mb-2 tracking-wide">{project.title}</h3>
-              <p className="text-gray-800 text-sm line-clamp-2">{project.description}</p>
+            <div className="p-6 text-center">
+              <h3 className="text-xl font-extrabold text-yellow-400 mb-2 tracking-wide">{project.title}</h3>
+              <p className="text-gray-800 text-sm line-clamp-2 leading-relaxed">{project.description}</p>
               <motion.span
-                className="inline-block mt-4 px-4 py-1 text-sm bg-pink-300 text-pink-800 rounded-full"
-                whileHover={{ backgroundColor: "#facc15", color: "#1f2937" }}
+                className="inline-block mt-4 px-5 py-1 text-sm bg-yellow-300 text-yellow-800 rounded-full font-semibold"
+                whileHover={{ backgroundColor: "#ec4899", color: "#ffffff" }}
                 transition={{ duration: 0.3 }}
               >
                 View Details
@@ -79,20 +84,25 @@ const Portofolio = () => {
       </div>
 
       {/* Show More Button */}
-      <div className="mt-10">
+      <motion.div
+        className="mt-12"
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.6, delay: 0.4 }}
+      >
         <button
           onClick={() => setShowMore(!showMore)}
-          className="px-6 py-2 bg-yellow-400 text-pink-800 font-semibold rounded-full hover:bg-pink-500 hover:text-white transition-all duration-300 shadow-md hover:shadow-lg"
+          className="px-8 py-3 bg-yellow-400 text-yellow-800 font-semibold rounded-full hover:bg-pink-500 hover:text-white transition-all duration-300 shadow-md hover:shadow-lg"
         >
           {showMore ? "Show Less" : "Show More"}
         </button>
-      </div>
+      </motion.div>
 
       {/* Detail Card Modal */}
       <AnimatePresence>
         {selectedProject && (
           <motion.div
-            className="fixed inset-0 z-50 bg-black bg-opacity-50 flex items-center justify-center px-4 py-8"
+            className="fixed inset-0 z-50 bg-black bg-opacity-60 flex items-center justify-center px-4 py-8"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
@@ -100,61 +110,75 @@ const Portofolio = () => {
             onClick={() => setSelectedProject(null)}
           >
             <motion.div
-              className="bg-pink-50 bg-opacity-90 rounded-2xl shadow-2xl border-2 border-pink-300 max-w-3xl w-full overflow-hidden"
+              className="bg-yellow-50 bg-opacity-90 backdrop-blur-lg rounded-2xl shadow-2xl border-l-4 border-yellow-400 max-w-4xl w-full overflow-hidden relative"
               initial={{ opacity: 0, scale: 0.9, y: 20 }}
               animate={{ opacity: 1, scale: 1, y: 0 }}
               exit={{ opacity: 0, scale: 0.9, y: 20 }}
               transition={{ duration: 0.4, ease: "easeOut" }}
               onClick={(e) => e.stopPropagation()}
             >
+              <div className="absolute w-16 h-16 bg-pink-100 rounded-full -top-6 -left-6 opacity-30 blur-xl"></div>
               <div className="relative flex flex-col sm:flex-row">
                 {/* Image */}
-                <div className="sm:w-1/2 w-full h-64 sm:h-80 relative">
+                <div className="sm:w-1/2 w-full h-64 sm:h-96 relative">
                   <img
                     src={selectedProject.image}
                     alt={selectedProject.title}
                     className="w-full h-full object-cover"
                   />
-                  <div className="absolute inset-0 bg-gradient-to-r from-pink-500/40 to-transparent" />
+                  <div className="absolute inset-0 bg-gradient-to-r from-yellow-400/50 to-transparent" />
                 </div>
 
                 {/* Content */}
-                <div className="sm:w-1/2 w-full p-6 flex flex-col justify-between">
+                <div className="sm:w-1/2 w-full p-8 flex flex-col justify-between">
                   <div>
-                    <h3 className="text-2xl font-extrabold text-pink-500 mb-3 tracking-tight">{selectedProject.title}</h3>
-                    <p className="text-gray-800 text-base mb-4 leading-relaxed">{selectedProject.description}</p>
+                    <h3 className="text-2xl sm:text-3xl font-extrabold text-yellow-400 mb-4 tracking-tight drop-shadow-md">{selectedProject.title}</h3>
+                    <p className="text-gray-800 text-base sm:text-lg mb-6 leading-relaxed">{selectedProject.description}</p>
                     {selectedProject.tools && (
-                      <div className="mb-4">
-                        <h4 className="text-sm font-semibold text-pink-500 mb-2">Tools:</h4>
+                      <div className="mb-6">
+                        <h4 className="text-sm font-semibold text-yellow-400 mb-2">Tools:</h4>
                         <div className="flex flex-wrap gap-2">
                           {selectedProject.tools.map((tool, index) => (
-                            <span
+                            <motion.span
                               key={index}
-                              className="px-3 py-1 text-xs bg-yellow-400 text-pink-800 rounded-full"
+                              className="px-3 py-1 text-xs bg-pink-300 text-yellow-800 rounded-full font-semibold"
+                              whileHover={{ scale: 1.1, backgroundColor: "#ec4899", color: "#ffffff" }}
+                              transition={{ duration: 0.2 }}
                             >
                               {tool}
-                            </span>
+                            </motion.span>
                           ))}
                         </div>
                       </div>
                     )}
+                    <div className="mb-6">
+                      <h4 className="text-sm font-semibold text-yellow-400 mb-2">Project Highlights:</h4>
+                      <ul className="list-disc list-inside text-gray-800 text-sm sm:text-base leading-relaxed">
+                        <li>Designed with a focus on user engagement and accessibility</li>
+                        <li>Optimized for performance across devices</li>
+                        <li>Integrated modern frameworks for scalability</li>
+                      </ul>
+                    </div>
                   </div>
                   <motion.a
                     href={selectedProject.link}
-                    className="inline-flex items-center gap-2 px-5 py-2 bg-pink-500 text-white font-semibold rounded-full hover:bg-yellow-400 hover:text-pink-800 transition-all duration-300 w-fit"
+                    className="inline-flex items-center gap-2 px-6 py-3 bg-yellow-400 text-yellow-800 font-semibold rounded-full hover:bg-pink-500 hover:text-white transition-all duration-300 w-fit"
                     whileHover={{ scale: 1.05 }}
+                    whileTap={{ scale: 0.95 }}
                   >
                     Visit Project <FaExternalLinkAlt />
                   </motion.a>
                 </div>
 
                 {/* Close Button */}
-                <button
+                <motion.button
                   onClick={() => setSelectedProject(null)}
-                  className="absolute top-3 right-3 text-sm px-3 py-1 bg-yellow-400 text-pink-800 font-semibold rounded-full hover:bg-pink-500 hover:text-white transition-all duration-300"
+                  className="absolute top-4 right-4 text-sm px-4 py-2 bg-pink-300 text-yellow-800 font-semibold rounded-full hover:bg-yellow-400 hover:text-pink-800 transition-all duration-300"
+                  whileHover={{ scale: 1.1 }}
+                  whileTap={{ scale: 0.9 }}
                 >
                   <FaArrowLeft className="inline mr-1" />
-                </button>
+                </motion.button>
               </div>
             </motion.div>
           </motion.div>

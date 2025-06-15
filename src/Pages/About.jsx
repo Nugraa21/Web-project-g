@@ -34,7 +34,7 @@ const skills = [
 const AboutPage = () => {
   return (
     <motion.section
-      className="min-h-screen flex flex-col items-center justify-center px-4 sm:px-8 lg:px-16 pt-20 sm:pt-24 pb-12 sm:pb-20 overflow-x-hidden relative bg-gradient-to-b from-white to-pink-50"
+      className="min-h-screen flex flex-col items-center justify-center px-4 sm:px-8 lg:px-16 pt-20 sm:pt-24 pb-12 sm:pb-20 overflow-x-hidden relative "
       id="About"
       initial={{ opacity: 0, y: 100, scale: 0.95 }}
       animate={{ opacity: 1, y: 0, scale: 1 }}
