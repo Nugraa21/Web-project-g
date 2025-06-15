@@ -11,6 +11,9 @@ import { AnimatePresence, motion } from 'framer-motion';
 import NotFound from "./NotFound.jsx";
 import { FaGithub, FaLinkedin, FaEnvelope } from "react-icons/fa";
 
+import RunningBanner from "./components/RunningBanner.jsx"; // Tambahkan ini di paling atas
+
+
 // ✅ Optimized custom cursor (no lag)
 function CustomCursor() {
   const [coords, setCoords] = useState({ x: 0, y: 0 });
@@ -129,6 +132,8 @@ const LandingPage = ({ showWelcome, setShowWelcome }) => {
               </div>
             </div>
           </motion.footer>
+
+           <RunningBanner /> {/* Ini baris tambahan */}
         </div>
       )}
     </>
