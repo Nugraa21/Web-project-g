@@ -2,6 +2,7 @@ import React, { memo } from "react";
 import { motion } from "framer-motion";
 import { FaFigma, FaLaptopCode, FaUserFriends } from "react-icons/fa";
 import { MdPsychology, MdDesignServices } from "react-icons/md";
+import { SiJavascript, SiReact, SiHtml5, SiCss3, SiTailwindcss, SiAdobe, SiAdobexd } from "react-icons/si";
 
 const skills = [
   {
@@ -28,6 +29,44 @@ const skills = [
     icon: <MdDesignServices className="text-blue-500 text-4xl" />,
     title: "Design Thinking",
     description: "Menggunakan pendekatan kreatif untuk memecahkan masalah secara iteratif melalui tahapan empathy hingga prototyping.",
+  },
+];
+
+const tools = [
+  {
+    icon: <SiJavascript className="text-yellow-400 text-4xl" />,
+    name: "JavaScript",
+    description: "Bahasa pemrograman untuk membangun interaksi dinamis pada web, mendukung pengembangan frontend dan backend.",
+  },
+  {
+    icon: <SiReact className="text-cyan-500 text-4xl" />,
+    name: "React",
+    description: "Library JavaScript untuk membangun antarmuka pengguna yang responsif dan komponen yang reusable.",
+  },
+  {
+    icon: <SiHtml5 className="text-orange-500 text-4xl" />,
+    name: "HTML5",
+    description: "Struktur dasar untuk membangun halaman web yang modern dan semantik.",
+  },
+  {
+    icon: <SiCss3 className="text-blue-500 text-4xl" />,
+    name: "CSS3",
+    description: "Mengatur gaya dan tata letak web untuk pengalaman visual yang menarik.",
+  },
+  {
+    icon: <SiTailwindcss className="text-teal-500 text-4xl" />,
+    name: "Tailwind CSS",
+    description: "Framework CSS untuk desain responsif yang cepat dan fleksibel.",
+  },
+  {
+    icon: <FaFigma className="text-pink-500 text-4xl" />,
+    name: "Figma",
+    description: "Alat desain kolaboratif untuk membuat wireframe, prototype, dan desain UI/UX.",
+  },
+  {
+    icon: <SiAdobexd className="text-purple-500 text-4xl" />,
+    name: "Adobe XD",
+    description: "Software untuk desain dan prototyping antarmuka pengguna dengan alur kerja yang efisien.",
   },
 ];
 
@@ -104,18 +143,98 @@ const AboutPage = () => {
         transition={{ duration: 0.8, delay: 0.6, ease: "easeOut" }}
       >
         {skills.map((skill, index) => (
-          <div
+          <motion.div
             key={index}
-            className="bg-white rounded-2xl shadow-lg p-6 border-l-4 border-pink-400 hover:scale-105 transition-transform duration-300 group relative overflow-hidden"
+            className="relative bg-gradient-to-br from-white to-pink-50 rounded-2xl shadow-lg p-6 border-2 border-pink-300 overflow-hidden group hover:shadow-xl transition-all duration-300"
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: index * 0.15, ease: "easeOut" }}
+            whileHover={{ scale: 1.07, boxShadow: "0 10px 20px rgba(244, 114, 182, 0.3)" }}
           >
-            <div className="absolute w-16 h-16 bg-yellow-100 rounded-full -top-6 -left-6 opacity-30 blur-xl"></div>
-            <div className="flex items-center gap-4 mb-4">
-              <div className="bg-pink-100 p-3 rounded-xl">{skill.icon}</div>
-              <h3 className="text-xl font-semibold text-pink-600">{skill.title}</h3>
-            </div>
-            <p className="text-gray-700 leading-relaxed">{skill.description}</p>
-          </div>
+            <div className="absolute inset-0 bg-gradient-to-r from-pink-500/10 to-yellow-500/10 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+            <div className="absolute w-32 h-32 bg-pink-400 rounded-full -top-16 -right-16 opacity-20 blur-3xl group-hover:opacity-30 transition-opacity duration-300"></div>
+            <div className="absolute w-24 h-24 bg-yellow-400 rounded-full -bottom-12 -left-12 opacity-20 blur-3xl group-hover:opacity-30 transition-opacity duration-300"></div>
+            <motion.div
+              className="relative flex items-center gap-4 mb-4"
+              initial={{ x: -20 }}
+              animate={{ x: 0 }}
+              transition={{ duration: 0.5 }}
+            >
+              <motion.div
+                className="bg-pink-200 p-4 rounded-full shadow-lg group-hover:bg-pink-300 transition-colors duration-300"
+                whileHover={{ scale: 1.2, rotate: 10 }}
+                transition={{ duration: 0.4 }}
+              >
+                {skill.icon}
+              </motion.div>
+              <h3 className="text-xl font-bold text-pink-600 group-hover:text-pink-700 transition-colors duration-300 drop-shadow-sm">
+                {skill.title}
+              </h3>
+            </motion.div>
+            <p className="text-gray-700 text-sm leading-relaxed group-hover:text-gray-900 transition-colors duration-300">
+              {skill.description}
+            </p>
+            <motion.div
+              className="absolute bottom-0 left-0 w-full h-1 bg-pink-500 scale-x-0 group-hover:scale-x-100 origin-left transition-transform duration-500"
+            ></motion.div>
+          </motion.div>
         ))}
+      </motion.div>
+
+      {/* Programming Languages and Tools */}
+      <motion.div
+        className="w-full max-w-7xl mt-16"
+        initial={{ opacity: 0, y: 50 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.8, delay: 0.8, ease: "easeOut" }}
+      >
+        <motion.h2
+          className="text-3xl sm:text-4xl font-bold text-yellow-500 mb-10 text-center tracking-tight drop-shadow-lg"
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, delay: 0.9 }}
+        >
+          Tools & Technologies
+        </motion.h2>
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+          {tools.map((tool, index) => (
+            <motion.div
+              key={index}
+              className="relative bg-gradient-to-br from-white to-yellow-50 rounded-xl shadow-lg p-5 border-2 border-yellow-300 overflow-hidden group hover:shadow-xl transition-all duration-300"
+              initial={{ opacity: 0, y: 30 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: index * 0.1, ease: "easeOut" }}
+              whileHover={{ scale: 1.07, boxShadow: "0 10px 20px rgba(255, 196, 0, 0.3)" }}
+            >
+              <div className="absolute inset-0 bg-gradient-to-r from-yellow-500/10 to-pink-500/10 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+              <div className="absolute w-24 h-24 bg-yellow-400 rounded-full -top-12 -right-12 opacity-20 blur-3xl group-hover:opacity-30 transition-opacity duration-300"></div>
+              <div className="absolute w-20 h-20 bg-pink-400 rounded-full -bottom-10 -left-10 opacity-20 blur-3xl group-hover:opacity-30 transition-opacity duration-300"></div>
+              <motion.div
+                className="relative flex items-center gap-3 mb-4"
+                initial={{ x: -20 }}
+                animate={{ x: 0 }}
+                transition={{ duration: 0.5 }}
+              >
+                <motion.div
+                  className="bg-yellow-200 p-3 rounded-full shadow-lg group-hover:bg-yellow-300 transition-colors duration-300"
+                  whileHover={{ scale: 1.15, rotate: 15 }}
+                  transition={{ duration: 0.4 }}
+                >
+                  {tool.icon}
+                </motion.div>
+                <h3 className="text-lg font-bold text-yellow-600 group-hover:text-yellow-700 transition-colors duration-300 drop-shadow-sm">
+                  {tool.name}
+                </h3>
+              </motion.div>
+              <p className="text-gray-700 text-xs leading-relaxed group-hover:text-gray-900 transition-colors duration-300">
+                {tool.description}
+              </p>
+              <motion.div
+                className="absolute bottom-0 left-0 w-full h-1 bg-yellow-500 scale-x-0 group-hover:scale-x-100 origin-left transition-transform duration-500"
+              ></motion.div>
+            </motion.div>
+          ))}
+        </div>
       </motion.div>
     </motion.section>
   );
