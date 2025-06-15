@@ -232,13 +232,13 @@ const Portofolio = () => {
                 <p className="text-gray-700 text-sm line-clamp-2 leading-relaxed font-comic-sans">
                   Issued by {certificate.issuer} on {certificate.date}
                 </p>
-                <motion.a
+                {/* <motion.a
                   href={certificate.link}
                   className="mt-5 px-6 py-2 bg-yellow-300 text-yellow-700 rounded-full font-semibold font-comic-sans hover:bg-yellow-400 transition-all duration-200 shadow-lg"
                   whileHover={{ scale: 1.1, y: -2 }}
                 >
                   View Certificate
-                </motion.a>
+                </motion.a> */}
               </div>
             </motion.div>
           ))}
