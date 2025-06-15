@@ -2,7 +2,7 @@ import { SitemapStream, streamToPromise } from 'sitemap';
 import fs from 'fs';
 
 async function generate() {
-  const sitemap = new SitemapStream({ hostname: 'https://www.nugra.my.id' });
+  const sitemap = new SitemapStream({ hostname: 'https://gemaa.pages.dev' });
 
   sitemap.write({ url: '/', changefreq: 'monthly' });
   sitemap.write({ url: '/about' });
