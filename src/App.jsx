@@ -80,49 +80,38 @@ const LandingPage = ({ showWelcome, setShowWelcome }) => {
             <ContactPage />
           </main>
           <motion.footer
-            className="mt-16 py-12 bg-transparent backdrop-blur-lg text-gray-800 relative overflow-hidden"
+            className="mt-16 py-8 bg-transparent backdrop-blur-lg text-gray-800 relative"
             initial={{ opacity: 0, y: 50 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, ease: "easeOut" }}
           >
-            <div className="absolute w-16 h-16 bg-yellow-100 rounded-full -top-6 -left-6 opacity-30 blur-xl animate-pulse"></div>
-            <div className="absolute w-12 h-12 bg-pink-100 rounded-full -bottom-4 -right-4 opacity-30 blur-xl animate-pulse"></div>
-            <div className="container mx-auto px-4 sm:px-8 lg:px-16 max-w-7xl">
+            <div className="container mx-auto px-4 sm:px-8 lg:px-16 max-w-5xl">
               <motion.div
-                className="bg-white rounded-2xl shadow-lg p-8 border-l-4 border-pink-400"
+                className="bg-white/95 rounded-xl shadow-md p-6 border-t-2 border-pink-400 hover:scale-105 transition-transform duration-300"
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6, delay: 0.2 }}
               >
-                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
-                  {/* About Gema */}
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                  {/* About & Contact */}
                   <motion.div
                     className="text-center sm:text-left"
                     initial={{ opacity: 0, x: -20 }}
                     animate={{ opacity: 1, x: 0 }}
                     transition={{ duration: 0.6, delay: 0.4 }}
                   >
-                    <h3 className="text-2xl font-extrabold text-pink-600 mb-4 tracking-tight drop-shadow-md">About Gema</h3>
-                    <p className="text-gray-700 text-sm sm:text-base leading-relaxed">
-                      Gema, aka Siti Mustagimah, is a Digital Media student with a passion for UI/UX design. Focused on creating delightful and impactful digital experiences through empathy and creativity.
+                    <h3 className="text-xl font-semibold text-pink-600 mb-3 tracking-tight">About Gema</h3>
+                    <p className="text-gray-600 text-sm leading-relaxed mb-4">
+                      Siti Mustagimah, a Digital Media student passionate about crafting delightful UI/UX designs with empathy and creativity.
                     </p>
-                  </motion.div>
-
-                  {/* Contact Info */}
-                  <motion.div
-                    className="text-center sm:text-left"
-                    initial={{ opacity: 0, x: 0 }}
-                    animate={{ opacity: 1, x: 0 }}
-                    transition={{ duration: 0.6, delay: 0.6 }}
-                  >
-                    <h3 className="text-2xl font-extrabold text-pink-600 mb-4 tracking-tight drop-shadow-md">Get in Touch</h3>
-                    <ul className="space-y-3 text-sm sm:text-base text-gray-700">
-                      <li className="flex items-center gap-3 justify-center sm:justify-start">
-                        <FaEnvelope className="text-pink-500 text-xl" />
+                    <h3 className="text-xl font-semibold text-pink-600 mb-3 tracking-tight">Get in Touch</h3>
+                    <ul className="space-y-2 text-sm text-gray-600">
+                      <li className="flex items-center gap-2 justify-center sm:justify-start">
+                        <FaEnvelope className="text-pink-500 text-lg" />
                         siti.mustagimah@students.ac.id
                       </li>
-                      <li className="flex items-center gap-3 justify-center sm:justify-start">
-                        <span className="text-pink-500 text-xl">📍</span>
+                      <li className="flex items-center gap-2 justify-center sm:justify-start">
+                        <span className="text-pink-500 text-lg">📍</span>
                         Yogyakarta, Indonesia
                       </li>
                     </ul>
@@ -133,37 +122,37 @@ const LandingPage = ({ showWelcome, setShowWelcome }) => {
                     className="text-center sm:text-left"
                     initial={{ opacity: 0, x: 20 }}
                     animate={{ opacity: 1, x: 0 }}
-                    transition={{ duration: 0.6, delay: 0.8 }}
+                    transition={{ duration: 0.6, delay: 0.6 }}
                   >
-                    <h3 className="text-2xl font-extrabold text-pink-600 mb-4 tracking-tight drop-shadow-md">Follow Gema</h3>
+                    <h3 className="text-xl font-semibold text-pink-600 mb-3 tracking-tight">Follow Gema</h3>
                     <div className="flex gap-4 justify-center sm:justify-start">
                       <motion.a
                         href="https://github.com/sitimustagimah"
-                        className="text-pink-500 bg-pink-100 p-2 rounded-full"
-                        whileHover={{ scale: 1.2, backgroundColor: "#ec4899", color: "#ffffff" }}
-                        transition={{ duration: 0.2 }}
+                        className="text-pink-500 bg-pink-100 p-3 rounded-full"
+                        whileHover={{ scale: 1.2, rotate: 5, backgroundColor: "#ec4899", color: "#ffffff" }}
+                        transition={{ duration: 0.3 }}
                       >
-                        <FaGithub size={24} />
+                        <FaGithub size={28} />
                       </motion.a>
                       <motion.a
                         href="https://linkedin.com/in/sitimustagimah"
-                        className="text-pink-500 bg-pink-100 p-2 rounded-full"
-                        whileHover={{ scale: 1.2, backgroundColor: "#ec4899", color: "#ffffff" }}
-                        transition={{ duration: 0.2 }}
+                        className="text-pink-500 bg-pink-100 p-3 rounded-full"
+                        whileHover={{ scale: 1.2, rotate: -5, backgroundColor: "#ec4899", color: "#ffffff" }}
+                        transition={{ duration: 0.3 }}
                       >
-                        <FaLinkedin size={24} />
+                        <FaLinkedin size={28} />
                       </motion.a>
                     </div>
                   </motion.div>
                 </div>
-                <motion.div
-                  className="mt-8 pt-6 text-center text-sm font-semibold text-gray-700 border-t border-pink-400"
-                  initial={{ opacity: 0 }}
-                  animate={{ opacity: 1 }}
-                  transition={{ duration: 0.6, delay: 1.0 }}
-                >
-                  © 2025 Gema (Siti Mustagimah). All rights reserved.
-                </motion.div>
+              </motion.div>
+              <motion.div
+                className="mt-6 text-center text-sm font-semibold text-gray-600"
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{ duration: 0.6, delay: 0.8 }}
+              >
+                © 2025 Gema (Siti Mustagimah). All rights reserved.
               </motion.div>
             </div>
           </motion.footer>
