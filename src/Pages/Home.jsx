@@ -19,16 +19,16 @@ const Home = () => {
           transition={{ duration: 0.8, delay: 0.2, ease: "easeOut" }}
         >
           <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-pink-600 mb-6 leading-tight tracking-wide">
-            Yo, I’m Gema!
+            Hi, I’m Siti Mustagimah!
           </h1>
           <p className="text-lg sm:text-xl text-gray-800 mb-6 font-medium max-w-lg">
-            Turning <span className="text-yellow-400">ideas </span> into functional and elegant digital design.
+            I design <span className="text-yellow-400 font-semibold">intuitive</span> and <span className="text-pink-500 font-semibold">engaging</span> digital experiences that users love.
           </p>
           <a
             href="#contact"
             className="px-8 py-3 bg-pink-600 text-white font-semibold rounded-full hover:bg-yellow-400 hover:text-gray-800 transition-all duration-300 shadow-md hover:shadow-lg hover:scale-105"
           >
-            Let’s Team Up!
+            Let’s Collaborate!
           </a>
         </motion.div>
 
@@ -39,7 +39,7 @@ const Home = () => {
           animate={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.8, delay: 0.4, ease: "easeOut" }}
         >
-          <div className="relative w-full h-96 bg-white rounded-2xl shadow-xl border-4 border-yellow-400 overflow-hidden transform group-hover:-translate-y-2 transition-transform duration-500">
+          <div className="relative w-full h-96 bg-white rounded-2xl shadow-xl border-4 border-pink-300 overflow-hidden transform group-hover:-translate-y-2 transition-transform duration-500">
             <div
               className="w-full h-full bg-gray-200 flex items-center justify-center text-gray-500 text-sm font-medium"
               style={{
@@ -48,9 +48,9 @@ const Home = () => {
                 backgroundPosition: "center",
               }}
             ></div>
-            <div className="absolute inset-0 bg-gradient-to-t from-yellow-400/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex items-end">
+            <div className="absolute inset-0 bg-gradient-to-t from-pink-300/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex items-end">
               <p className="text-white text-center w-full pb-4 font-semibold text-sm">
-                  " Siti Mustagimah. "
+                "Siti Mustagimah"
               </p>
             </div>
             <div className="absolute -top-2 -right-2 w-8 h-8 bg-pink-400 rounded-full animate-ping opacity-75"></div>
