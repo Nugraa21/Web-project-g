@@ -143,7 +143,7 @@ const Portofolio = () => {
       {/* Project Detail View */}
       {selectedProject && (
         <motion.div
-          className="fixed inset-0 z-50 bg-gradient-to-br from-pink-100 to-rose-100 flex items-center justify-center p-4 sm:p-6 overflow-y-auto"
+          className="fixed inset-0 z-50 bg-gradient-to-br from-pink-100 to-rose-100 flex items-start justify-center p-4 sm:p-6 overflow-y-auto"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
@@ -151,7 +151,7 @@ const Portofolio = () => {
           onClick={() => setSelectedProject(null)}
         >
           <motion.div
-            className="w-full max-w-4xl bg-white rounded-2xl shadow-2xl border-2 border-pink-300 p-6 sm:p-8 relative"
+            className="w-full max-w-2xl bg-white rounded-2xl shadow-2xl border-2 border-pink-300 p-6 sm:p-8 my-10 sm:my-12 relative"
             variants={detailVariants}
             initial="hidden"
             animate="visible"
@@ -159,15 +159,15 @@ const Portofolio = () => {
             onClick={(e) => e.stopPropagation()}
           >
             <button
-              className="absolute top-4 left-4 bg-pink-500 text-white rounded-full p-2 hover:bg-pink-600 transition-colors duration-200"
+              className="absolute top-4 left-4 bg-pink-500 text-white rounded-full p-3 hover:bg-pink-600 transition-colors duration-200 z-10"
               onClick={() => setSelectedProject(null)}
             >
-              <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+              <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M10 19l-7-7m0 0l7-7m-7 7h18" />
               </svg>
             </button>
             <div className="text-center mb-6 sm:mb-8">
-              <h2 className="text-3xl sm:text-4xl font-extrabold text-pink-600 tracking-wide drop-shadow-md">{selectedProject.title}</h2>
+              <h2 className="text-2xl sm:text-3xl font-extrabold text-pink-600 tracking-wide drop-shadow-md">{selectedProject.title}</h2>
               <p className="text-gray-600 text-xs sm:text-sm mt-2">Click outside to return</p>
             </div>
             <div className="flex flex-col gap-6 sm:gap-8">
