@@ -2,7 +2,7 @@ import React, { memo } from "react";
 import { motion } from "framer-motion";
 import { FaFigma, FaLaptopCode, FaUserFriends } from "react-icons/fa";
 import { MdPsychology, MdDesignServices } from "react-icons/md";
-import { SiJavascript, SiReact, SiHtml5, SiCss3, SiTailwindcss, SiAdobe, SiAdobexd } from "react-icons/si";
+import { SiJavascript, SiReact, SiHtml5, SiCss3, SiTailwindcss, SiAdobe, SiAdobexd ,SiLaravel } from "react-icons/si";
 
 const skills = [
   {
@@ -64,9 +64,9 @@ const tools = [
     description: "Alat desain kolaboratif untuk membuat wireframe, prototype, dan desain UI/UX.",
   },
   {
-    icon: <SiAdobexd className="text-purple-500 text-4xl" />,
-    name: "Adobe XD",
-    description: "Software untuk desain dan prototyping antarmuka pengguna dengan alur kerja yang efisien.",
+    icon: <SiLaravel className="text-red-500 text-4xl" />,
+    name: "Laravel",
+    description: "Framework PHP yang elegan untuk membangun aplikasi web modern dengan arsitektur MVC.",
   },
 ];
 

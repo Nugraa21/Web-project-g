@@ -9,12 +9,19 @@ import ContactPage from "./Pages/Contact.jsx";
 import WelcomeScreen from "./Pages/WelcomeScreen.jsx";
 import { AnimatePresence, motion } from 'framer-motion';
 import NotFound from "./NotFound.jsx";
-import { FaGithub, FaLinkedin, FaEnvelope } from "react-icons/fa";
+import RunningBanner from "./components/RunningBanner.jsx";
 
-import RunningBanner from "./components/RunningBanner.jsx"; // Tambahkan ini di paling atas
+import {
+  SiReact,
+  SiTailwindcss,
+  SiNodedotjs,
+  SiCloudflare,
+  SiGithub,
+  SiLinkedin
+} from "react-icons/si";
+import { FaEnvelope } from "react-icons/fa";
 
-
-// ✅ Optimized custom cursor (no lag)
+// ✅ Optimized custom cursor
 function CustomCursor() {
   const [coords, setCoords] = useState({ x: 0, y: 0 });
 
@@ -30,9 +37,7 @@ function CustomCursor() {
   }, []);
 
   return (
-    <div
-      className="fixed top-0 left-0 w-full h-full pointer-events-none z-[9999] hidden sm:block"
-    >
+    <div className="fixed top-0 left-0 w-full h-full pointer-events-none z-[9999] hidden sm:block">
       <div
         className="w-4 h-4 rounded-full bg-yellow-400 border border-pink-500 shadow-md"
         style={{
@@ -65,27 +70,42 @@ const LandingPage = ({ showWelcome, setShowWelcome }) => {
           </main>
 
           {/* Footer */}
-          <motion.footer
-            className="mt-16 py-12 bg-transparent text-gray-800"
-            initial={{ opacity: 0, y: 40 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
-          >
-            <div className="container mx-auto px-4 sm:px-8 lg:px-16 max-w-6xl">
-              <div className="bg-white/80 rounded-xl shadow-md p-8 border border-pink-300">
-                <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <motion.footer
+              className="mt-20 bg-gradient-to-tr from-white to-pink-50 border-t border-pink-100 shadow-inner py-12"
+              initial={{ opacity: 0, y: 40 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8 }}
+            >
+              <div className="max-w-6xl mx-auto px-6">
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-10">
                   
-                  {/* About */}
+                  {/* WEBSITE INFO */}
                   <div>
-                    <h3 className="text-lg font-bold text-pink-600 mb-2">About Gema</h3>
-                    <p className="text-gray-600 text-sm">
-                      Siti Mustagimah, a Digital Media student creating intuitive UI/UX designs with creativity and empathy.
+                    <h4 className="text-xl font-semibold text-pink-600 mb-4 flex items-center gap-2">
+                      <span>🚀</span> Website Info
+                    </h4>
+                    <p className="text-sm text-gray-600 mb-4 leading-relaxed">
+                      Built with modern web technologies to ensure performance and style.
                     </p>
+                    <div className="flex flex-wrap gap-3 text-sm">
+                      <span className="flex items-center gap-2 px-3 py-1 rounded-full bg-gray-100 shadow-sm">
+                        <SiNodedotjs className="text-green-600" /> Node.js
+                      </span>
+                      <span className="flex items-center gap-2 px-3 py-1 rounded-full bg-gray-100 shadow-sm">
+                        <SiReact className="text-blue-500" /> React
+                      </span>
+                      <span className="flex items-center gap-2 px-3 py-1 rounded-full bg-gray-100 shadow-sm">
+                        <SiTailwindcss className="text-cyan-500" /> Tailwind CSS
+                      </span>
+                      <span className="flex items-center gap-2 px-3 py-1 rounded-full bg-gray-100 shadow-sm">
+                        <SiCloudflare className="text-orange-500" /> Cloudflare
+                      </span>
+                    </div>
                   </div>
 
-                  {/* Contact */}
+                  {/* CONTACT */}
                   <div>
-                    <h3 className="text-lg font-bold text-pink-600 mb-2">Get in Touch</h3>
+                    <h4 className="text-xl font-semibold text-pink-600 mb-4">Contact</h4>
                     <ul className="space-y-2 text-sm text-gray-600">
                       <li className="flex items-center gap-2">
                         <FaEnvelope className="text-pink-500" />
@@ -97,43 +117,46 @@ const LandingPage = ({ showWelcome, setShowWelcome }) => {
                     </ul>
                   </div>
 
-                  {/* Social */}
+                  {/* SOCIALS */}
                   <div>
-                    <h3 className="text-lg font-bold text-pink-600 mb-2">Follow Me</h3>
+                    <h4 className="text-xl font-semibold text-pink-600 mb-4">Follow Me</h4>
                     <div className="flex gap-4">
                       <a
                         href="https://github.com/sitimustagimah"
                         target="_blank"
                         className="text-pink-600 bg-pink-100 p-3 rounded-full hover:bg-pink-500 hover:text-white transition-all"
                       >
-                        <FaGithub size={20} />
+                        <SiGithub size={20} />
                       </a>
                       <a
                         href="https://linkedin.com/in/sitimustagimah"
                         target="_blank"
                         className="text-pink-600 bg-pink-100 p-3 rounded-full hover:bg-pink-500 hover:text-white transition-all"
                       >
-                        <FaLinkedin size={20} />
+                        <SiLinkedin size={20} />
                       </a>
                     </div>
+                    <p className="mt-4 text-xs text-gray-500 italic">
+                      Let's build something amazing together 🌟
+                    </p>
                   </div>
                 </div>
-              </div>
 
-              <div className="mt-8 text-center text-sm text-gray-500">
-                <a
-                  href="https://nugra.my.id"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="text-pink-500 font-semibold hover:underline"
-                >
-                  © 2025 Nugra21
-                </a> — All rights reserved.
+                {/* COPYRIGHT */}
+                <div className="mt-10 text-center text-sm text-gray-500 border-t pt-6">
+                  <a
+                    href="https://nugra.my.id"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-pink-500 font-semibold hover:underline"
+                  >
+                    © 2025 Nugra21
+                  </a>{" "}
+                  — Made with Code.
+                </div>
               </div>
-            </div>
-          </motion.footer>
-
-           <RunningBanner /> {/* Ini baris tambahan */}
+            </motion.footer>
+          <RunningBanner />
         </div>
       )}
     </>

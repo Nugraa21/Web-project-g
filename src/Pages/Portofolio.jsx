@@ -3,46 +3,112 @@ import { motion } from "framer-motion";
 
 const projects = [
   {
-    title: "Anime Quiz App",
-    description: "A fun anime-themed quiz app built with React and Tailwind CSS, offering engaging quizzes for anime fans.",
-    image: "https://via.placeholder.com/1280x720?text=Anime+Quiz+App",
-    link: "#",
-    tools: ["React", "Tailwind CSS", "Vite"],
-    features: ["Interactive quizzes", "Real-time scoring", "Anime-themed UI"],
+    title: "Presentasi: Menerapkan ISO 27001 di UKM",
+    description:
+      "Presentasi mendalam tentang bagaimana UKM dapat mengadopsi standar keamanan informasi ISO 27001 untuk meningkatkan kepercayaan pelanggan dan mengurangi risiko.",
+    image: "./project/p1.png",
+    link: "https://drive.google.com/file/d/1gS_ARlzXc6VixfTOGaX7qeGa5jiduCrA/view",
+    tools: ["PowerPoint", "ISO 27001 Framework"],
+    features: ["Studi kasus nyata", "Infografik", "Checklist implementasi"],
   },
   {
-    title: "Portfolio Website",
-    description: "A vibrant portfolio showcasing my projects with React and Framer Motion, designed for a smooth user experience.",
-    image: "https://via.placeholder.com/1280x720?text=Portfolio+Website",
-    link: "#",
-    tools: ["React", "Framer Motion", "Tailwind CSS"],
-    features: ["Dynamic animations", "Responsive design", "Project showcase"],
+    title: "Review Framework ISO 27001 untuk Gen Z",
+    description:
+      "Artikel interaktif yang membahas bagaimana generasi muda dapat lebih memahami dan menerapkan ISO 27001 dengan gaya bahasa ringan dan relevan.",
+    image: "./project/p2.png",
+    link: "https://drive.google.com/file/d/18dz0FASagQGPn4ngB32P_4DDKw6A-JXi/view?usp=drive_link",
+    tools: ["Canva", "Google Docs"],
+    features: ["Bahasa Gen Z", "Contoh relevan", "Ilustrasi visual"],
   },
   {
-    title: "E-Commerce Platform",
-    description: "A responsive anime merchandise store with dynamic filtering, built with React and Tailwind CSS.",
-    image: "https://via.placeholder.com/1280x720?text=E-Commerce+Platform",
-    link: "#",
-    tools: ["React", "Tailwind CSS"],
-    features: ["Product filtering", "Cart system", "Mobile-friendly"],
+    title: "Artikel: Password Policy",
+    description:
+      "Dokumen ini menjelaskan pentingnya kebijakan password yang kuat serta praktik terbaik dalam pembuatan dan pengelolaan kata sandi.",
+    image: "./project/p3.png",
+    link: "https://drive.google.com/file/d/1XCLkjPGovAC_JWCSP9G-8sRuj9NcHy93/view?usp=drive_link",
+    tools: ["Google Docs"],
+    features: ["Checklist password", "Rekomendasi tools", "Contoh kebijakan"],
   },
   {
-    title: "Chat Application",
-    description: "A real-time chat app built with React and WebSocket, featuring user authentication.",
-    image: "https://via.placeholder.com/1280x720?text=Chat+Application",
-    link: "#",
-    tools: ["React", "WebSocket", "Tailwind CSS"],
-    features: ["Real-time messaging", "User authentication", "Custom emojis"],
+    title: "Artikel: Implementasi Cybersecurity",
+    description:
+      "Artikel yang membahas berbagai pendekatan dalam menerapkan cybersecurity di organisasi kecil hingga menengah.",
+    image: "./project/p4.png",
+    link: "https://drive.google.com/file/d/13GOSWY_322aj377qGWNrAYwceklLtc5B/view?usp=drive_link",
+    tools: ["Google Docs"],
+    features: ["Strategi bertahap", "Analisis risiko", "Tips mitigasi"],
   },
   {
-    title: "Task Manager",
-    description: "A task management tool built with React, offering drag-and-drop functionality.",
-    image: "https://via.placeholder.com/1280x720?text=Task+Manager",
-    link: "#",
-    tools: ["React", "Tailwind CSS", "Drag-and-Drop"],
-    features: ["Task prioritization", "Drag-and-drop", "Progress tracking"],
+    title: "Simulasi Dokumen CRA Risk Assessment Shopee",
+    description:
+      "Simulasi penilaian risiko menggunakan metode CRA untuk Shopee sebagai studi kasus. Menunjukkan bagaimana risiko diidentifikasi dan dikategorikan.",
+    image: "./project/p5.png",
+    link: "https://docs.google.com/spreadsheets/d/1szNyao3-V19VyAQpsvMsb8HeRSk0jE3m/edit?usp=drive_link&ouid=104545043643630168410&rtpof=true&sd=true",
+    tools: ["Google Spreadsheet"],
+    features: ["Matrix risiko", "Kategori risiko", "Level dampak"],
+  },
+  {
+    title: "Simulasi Dokumen Risk Management Shopee",
+    description:
+      "Dokumen ini menyimulasikan proses manajemen risiko Shopee berdasarkan standar ISO. Termasuk strategi mitigasi dan monitoring.",
+    image: "./project/p6.png",
+    link: "https://docs.google.com/spreadsheets/d/1PZ4OuhvgOIaTPd8knNjL-z-rj5yaxld_/edit?usp=drive_link&ouid=104545043643630168410&rtpof=true&sd=true",
+    tools: ["Google Spreadsheet"],
+    features: ["Identifikasi risiko", "Strategi mitigasi", "Evaluasi berkelanjutan"],
   },
 ];
+
+// const projects = [
+//   {
+//     title: "Presentasi: Menerapkan ISO 27001 di UKM",
+//     description: "",
+//     image: "./project/p1.png",
+//     link: "https://drive.google.com/file/d/1gS_ARlzXc6VixfTOGaX7qeGa5jiduCrA/view",
+//     tools: [],
+//     features: [],
+//   },
+//   {
+//     title: "Review Framework ISO 27001 untuk Gen Z",
+//     description: "",
+//     image: "./project/p2.png",
+//     link: "https://drive.google.com/file/d/18dz0FASagQGPn4ngB32P_4DDKw6A-JXi/view?usp=drive_link",
+//     tools: [],
+//     features: [],
+//   },
+//   {
+//     title: "Artikel: Password Policy",
+//     description: "",
+//     image: "./project/p3.png",
+//     link: "https://drive.google.com/file/d/1XCLkjPGovAC_JWCSP9G-8sRuj9NcHy93/view?usp=drive_link",
+//     tools: [],
+//     features: [],
+//   },
+//   {
+//     title: "Artikel: Implementasi Cybersecurity",
+//     description: "",
+//     image: "./project/p4.png",
+//     link: "https://drive.google.com/file/d/13GOSWY_322aj377qGWNrAYwceklLtc5B/view?usp=drive_link",
+//     tools: [],
+//     features: [],
+//   },
+//   {
+//     title: "Simulasi Dokumen CRA Risk Assessment Shopee",
+//     description: "",
+//     image: "./project/p5.png",
+//     link: "https://docs.google.com/spreadsheets/d/1szNyao3-V19VyAQpsvMsb8HeRSk0jE3m/edit?usp=drive_link&ouid=104545043643630168410&rtpof=true&sd=true",
+//     tools: [],
+//     features: [],
+//   },
+//   {
+//     title: "Simulasi Dokumen Risk Management Shopee",
+//     description: "",
+//     image: "./project/p6.png",
+//     link: "https://docs.google.com/spreadsheets/d/1PZ4OuhvgOIaTPd8knNjL-z-rj5yaxld_/edit?usp=drive_link&ouid=104545043643630168410&rtpof=true&sd=true",
+//     tools: [],
+//     features: [],
+//   },
+
+// ];
 
 const certificates = [
   {
@@ -425,14 +491,14 @@ const Portofolio = () => {
               >
                 {selectedProject.issuer ? "View Certificate" : "View Project"}
               </a>
-              {selectedProject.tools.length > 0 && (
+              {/* {selectedProject.tools.length > 0 && (
                 <a
                   href="#"
                   className="px-6 sm:px-8 py-2 sm:py-3 bg-pink-300 text-pink-700 rounded-full font-semibold font-comic-sans hover:bg-pink-400 transition-all duration-200 hover:shadow-lg"
                 >
                   GitHub
                 </a>
-              )}
+              )} */}
             </div>
           </motion.div>
         </motion.div>
